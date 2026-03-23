@@ -1,0 +1,75 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Default pipeline (file di default)",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "Main",
+      "args": "",
+      "classPaths": ["${workspaceFolder}/bin"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Pipeline su WND_L2.nexus",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "Main",
+      "args": "pipeline resources/WND_L2.nexus output",
+      "classPaths": ["${workspaceFolder}/bin"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Pipeline su Giuliano_colours.nexus",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "Main",
+      "args": "pipeline resources/Giuliano_colours.nexus output",
+      "classPaths": ["${workspaceFolder}/bin"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Solo nexus2json (WND_L2)",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "Main",
+      "args": "nexus2json resources/WND_L2.nexus output/WND_L2.json",
+      "classPaths": ["${workspaceFolder}/bin"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Solo label (WND_L2)",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "Main",
+      "args": "label output/WND_L2.json output/WND_L2_labeled.json",
+      "classPaths": ["${workspaceFolder}/bin"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Solo json2nexus (WND_L2)",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "Main",
+      "args": "json2nexus output/WND_L2_labeled.json output/WND_L2_reconstructed.nexus",
+      "classPaths": ["${workspaceFolder}/bin"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Mostra help",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "Main",
+      "args": "help",
+      "classPaths": ["${workspaceFolder}/bin"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ]
+}
