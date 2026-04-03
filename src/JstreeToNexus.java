@@ -15,7 +15,7 @@ import java.util.*;
  *   data.annotation_name  →  [&!name="val"]
  *   altri campi custom    →  [&!key=val]
  *   data.branch_length    →  :valore
- *   data.hier_label       →  ignorato
+ *   data.hier_label       →  [&!hier_label=val]
  *
  * Chiamato da Main oppure direttamente:
  *   new JstreeToNexus().process("input.json", "output.nexus");
@@ -24,7 +24,7 @@ public class JstreeToNexus {
 
     // ── Campi da NON serializzare come annotazioni ────────────────────────────
     private static final Set<String> SKIP_FIELDS = new HashSet<>(Arrays.asList(
-            "hier_label", "branch_length"
+            "branch_length"
     ));
 
     // ── Campi senza prefisso '!' ───────────────────────────────────────────────

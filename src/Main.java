@@ -12,6 +12,8 @@ import java.util.*;
  * ║  nexus2json  →  NexusToJstree   (NEXUS  → JSON jstree)      ║
  * ║  label       →  JstreeLabeler   (JSON   → JSON + hier_label) ║
  * ║  json2nexus  →  JstreeToNexus   (JSON   → NEXUS annotato)   ║
+ * ║  colorize    →  JstreeColorizer    (CSV + JSON → JSON colorato)     ║
+ * ║  propagate   →  JstreeAttributePropagator (propaga attributo bottom-up) ║
  * ║  pipeline    →  tutte e tre in sequenza                      ║
  * ║                                                              ║
  * ╠══════════════════════════════════════════════════════════════╣
@@ -29,6 +31,9 @@ import java.util.*;
  * ║                                                              ║
  * ║  json2nexus <input.json> <output.nexus>                      ║
  * ║    Ricostruisce un file NEXUS dagli attributi JSON           ║
+ * ║                                                              ║
+ * ║  colorize <input.json> <colors.csv> <output.json>            ║
+ * ║    Assegna colori ai nodi del JSON da un CSV codice,colore   ║
  * ║                                                              ║
  * ║  pipeline <input.nexus> [output-dir]                         ║
  * ║    nexus → json → json-labeled → nexus ricostruito           ║
@@ -102,6 +107,30 @@ public class Main {
                 ensureParentDir(out);
                 printStep("JSON → NEXUS", in, out);
                 new JstreeToNexus().process(in, out);
+                break;
+            }
+
+            // ── colorize ──────────────────────────────────────────────────
+            case "colorize": {
+                requireArgs(args, 3, "colorize <input.json> <colors.csv> <output.json>");
+                String in  = resolveInput(args[1]);
+                String csv = resolveInput(args[2]);
+                String out = args[3];
+                ensureParentDir(out);
+                printStep("JSON + CSV → JSON colorato", in + " + " + csv, out);
+                new JstreeColorizer().process(in, csv, out);
+                break;
+            }
+
+            // ── propagate ─────────────────────────────────────────────────
+            case "propagate": {
+                requireArgs(args, 3, "propagate <input.json> <attribute> <output.json>");
+                String in   = resolveInput(args[1]);
+                String attr = args[2];
+                String out  = args[3];
+                ensureParentDir(out);
+                printStep("JSON propagate '" + attr + "'", in, out);
+                new JstreeAttributePropagator().process(in, attr, out);
                 break;
             }
 
@@ -305,6 +334,19 @@ public class Main {
         System.out.println("║  java -cp bin Main json2nexus <in.json> <out.nexus>          ║");
         System.out.println("║    Ricostruisce NEXUS dagli attributi JSON                   ║");
         System.out.println("║                                                              ║");
+        System.out.println("║  java -cp bin Main colorize <in.json> <colors.csv> <out.json>║");
+        System.out.println("║    Assegna colori (data.color) ai nodi dal CSV codice/colore ║");
+        System.out.println("║    CSV: intestazione 'codice,colore' (sep. , o ;)            ║");
+        System.out.println("║    Il matching avviene sul campo 'text' (poi 'id')           ║");
+        System.out.println("║                                                              ║");
+        System.out.println("║  java -cp bin Main propagate <in.json> <attr> <out.json>     ║");
+        System.out.println("║    Propaga bottom-up il valore di data.<attr> dalle foglie   ║");
+        System.out.println("║    Figli concordi    → assegna il valore al padre            ║");
+        System.out.println("║    Figli discordanti → rimuove il valore dal padre           ║");
+        System.out.println("║    Figli senza attr  → ignorati nel calcolo                  ║");
+        System.out.println("║    Aggiunge root_attribute=k al nodo con hier_label piu'     ║");
+        System.out.println("║    corto (lunghezza stringa minima) per ogni valore k         ║");
+        System.out.println("║                                                              ║");
         System.out.println("║  java -cp bin Main pipeline <in.nexus> [output-dir]          ║");
         System.out.println("║    nexus → json → json+labels → nexus ricostruito            ║");
         System.out.println("║    output-dir default: output/                               ║");
@@ -315,7 +357,7 @@ public class Main {
         System.out.println("║    data.label           →  [&label=N]                        ║");
         System.out.println("║    data.annotation_name →  [&!name=\"val\"]                    ║");
         System.out.println("║    data.branch_length   →  :valore                           ║");
-        System.out.println("║    data.hier_label      →  ignorato                          ║");
+        System.out.println("║    data.hier_label      →  [&!hier_label=val]                ║");
         System.out.println("║                                                              ║");
         System.out.println("╚══════════════════════════════════════════════════════════════╝");
         System.out.println();
