@@ -18,6 +18,24 @@ output/                      ← generato automaticamente
 
 ---
 
+## Quick and dirty
+
+```bash
+./label_and_nexus.sh resources/WND_L2.nexus output
+```
+
+Compila, etichetta e converte in un colpo solo. Produce in `output/`:
+
+- `WND_L2.json` — JSON jstree flat
+- `WND_L2_labeled.json` — JSON con `hier_label`, `hier_label16`, `hier_label32`, `root_color`
+- `WND_L2_labeled.tsv` — tabella completa di tutti i nodi
+- `WND_L2_labeled_root_colors.tsv` — soli nodi radice per colore
+- `WND_L2_labeled.nexus` — NEXUS annotato (FigTree)
+- `WND_L2_labeled.nwk` — Newick puro con apici
+- `WND_L2_labeled_noquote.nwk` — Newick puro senza apici
+
+---
+
 ## Compilazione
 
 ```bash
