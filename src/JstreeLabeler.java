@@ -17,6 +17,11 @@ import java.util.*;
  * Il campo "hier_label" viene aggiunto sia a livello top del nodo
  * sia all'interno del blocco "data" (per compatibilita' jsTree).
  *
+ * Vengono prodotti anche:
+ *   hier_label16 — segmenti raggruppati in quartetti, ciascuno → cifra hex (0–F)
+ *                  mapping: posizione p → bit (p-1); right-pad 0 sull'ultimo gruppo
+ *   hier_label32 — segmenti raggruppati in quintetti, ciascuno → cifra base32 (0–9A–V)
+ *
  * Chiamato da Main oppure direttamente:
  *   new JstreeLabeler().process("input.json", "output.json");
  */
@@ -28,6 +33,8 @@ public class JstreeLabeler {
         String parent;
         String text;
         String hierLabel;
+        String hierLabel16;
+        String hierLabel32;
         final Map<String, String> data    = new LinkedHashMap<>();
         final List<String>        childIds = new ArrayList<>();
     }
@@ -59,7 +66,9 @@ public class JstreeLabeler {
         if (root == null) throw new RuntimeException("Radice non trovata nel JSON.");
 
         // Assegna label gerarchiche con BFS
-        root.hierLabel = "0";
+        root.hierLabel   = "0";
+        root.hierLabel16 = "0";
+        root.hierLabel32 = "0";
         Queue<String> queue = new ArrayDeque<>();
         queue.add(root.id);
 
@@ -74,16 +83,54 @@ public class JstreeLabeler {
                 if (child == null) continue;
 
                 int position = i + 1;   // 1-based
-                child.hierLabel = "0".equals(base)
+                child.hierLabel   = "0".equals(base)
                         ? String.valueOf(position)
                         : base + "." + position;
+                child.hierLabel16 = toHierLabel16(child.hierLabel);
+                child.hierLabel32 = toHierLabel32(child.hierLabel);
 
                 queue.add(childId);
             }
         }
 
+        assignRootColors(nodes);
         printStats(nodes);
         writeJson(nodes, outputPath);
+
+        String base = outputPath.replaceAll("\\.[^.]+$", "");
+        writeTsv(nodes, base + ".tsv");
+        writeRootColorTsv(nodes, base + "_root_colors.tsv");
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
+    //  Per ogni colore distinto, assegna root_color=colore al nodo con
+    //  hier_label di lunghezza minima (a parità, lessicograficamente minore).
+    // ════════════════════════════════════════════════════════════════════════
+    private void assignRootColors(List<Node> nodes) {
+        // Rimuove root_color preesistenti
+        for (Node n : nodes) n.data.remove("root_color");
+
+        Map<String, Node> best = new LinkedHashMap<>();
+        for (Node n : nodes) {
+            String color = n.data.get("color");
+            if (color == null || color.isEmpty()) continue;
+            if (n.hierLabel == null || n.hierLabel.isEmpty()) continue;
+
+            Node cur = best.get(color);
+            if (cur == null) {
+                best.put(color, n);
+            } else {
+                int lenN   = n.hierLabel.length();
+                int lenCur = cur.hierLabel.length();
+                if (lenN < lenCur || (lenN == lenCur && n.hierLabel.compareTo(cur.hierLabel) < 0))
+                    best.put(color, n);
+            }
+        }
+
+        for (Map.Entry<String, Node> e : best.entrySet())
+            e.getValue().data.put("root_color", e.getKey());
+
+        System.out.printf("    root_color assegnati : %d colori distinti%n", best.size());
     }
 
     // ════════════════════════════════════════════════════════════════════════
@@ -105,6 +152,48 @@ public class JstreeLabeler {
         if (deepest != null)
             System.out.printf("    Label piu' lunga : %s  ->  %s%n",
                     deepest.hierLabel, deepest.text);
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
+    //  Codifica hier_label in base 16 e base 32
+    //
+    //  Ogni segmento di hier_label viene mappato come (valore - 1) = bit.
+    //  I segmenti vengono raggruppati da sinistra; l'ultimo gruppo viene
+    //  completato con bit 0 a destra prima della conversione.
+    //
+    //  Base16: gruppi da 4 segmenti → cifra 0-9A-F (4 bit)
+    //  Base32: gruppi da 5 segmenti → cifra 0-9A-V (5 bit)
+    // ════════════════════════════════════════════════════════════════════════
+    static String toHierLabel16(String hierLabel) {
+        if (hierLabel == null || hierLabel.isEmpty() || "0".equals(hierLabel)) return "0";
+        String[] parts = hierLabel.split("\\.");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < parts.length; i += 4) {
+            int val = 0;
+            int end = Math.min(i + 4, parts.length);
+            for (int j = i; j < end; j++)
+                val = val * 2 + (Integer.parseInt(parts[j]) - 1);
+            // right-pad con 0 i bit mancanti nell'ultimo gruppo
+            for (int j = end; j < i + 4; j++) val *= 2;
+            sb.append(Integer.toHexString(val).toUpperCase());
+        }
+        return sb.toString();
+    }
+
+    static String toHierLabel32(String hierLabel) {
+        if (hierLabel == null || hierLabel.isEmpty() || "0".equals(hierLabel)) return "0";
+        final String CHARS = "0123456789ABCDEFGHIJKLMNOPQRSTUV";
+        String[] parts = hierLabel.split("\\.");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < parts.length; i += 5) {
+            int val = 0;
+            int end = Math.min(i + 5, parts.length);
+            for (int j = i; j < end; j++)
+                val = val * 2 + (Integer.parseInt(parts[j]) - 1);
+            for (int j = end; j < i + 5; j++) val *= 2;
+            sb.append(CHARS.charAt(val & 31));
+        }
+        return sb.toString();
     }
 
     // ════════════════════════════════════════════════════════════════════════
@@ -227,6 +316,79 @@ public class JstreeLabeler {
     }
 
     // ════════════════════════════════════════════════════════════════════════
+    //  TSV completo: sample + hier_label* + tutti i campi data
+    // ════════════════════════════════════════════════════════════════════════
+    private void writeTsv(List<Node> nodes, String path) throws Exception {
+        LinkedHashSet<String> allKeys = new LinkedHashSet<>();
+        allKeys.add("hier_label");
+        allKeys.add("hier_label16");
+        allKeys.add("hier_label32");
+        for (Node n : nodes) allKeys.addAll(n.data.keySet());
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("sample");
+        for (String k : allKeys) sb.append('\t').append(k);
+        sb.append('\n');
+
+        for (Node n : nodes) {
+            Map<String, String> row = buildDataRow(n);
+            sb.append(n.text == null ? "" : n.text);
+            for (String k : allKeys) {
+                sb.append('\t');
+                String v = row.get(k);
+                if (v != null) sb.append(v);
+            }
+            sb.append('\n');
+        }
+
+        Files.write(Paths.get(path), sb.toString().getBytes("UTF-8"));
+        System.out.printf("    TSV nodi totali      : %d nodi → %s%n", nodes.size(), path);
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
+    //  TSV dei soli nodi con root_color: stesse colonne del TSV completo
+    // ════════════════════════════════════════════════════════════════════════
+    private void writeRootColorTsv(List<Node> nodes, String path) throws Exception {
+        LinkedHashSet<String> allKeys = new LinkedHashSet<>();
+        allKeys.add("hier_label");
+        allKeys.add("hier_label16");
+        allKeys.add("hier_label32");
+        for (Node n : nodes) allKeys.addAll(n.data.keySet());
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("sample");
+        for (String k : allKeys) sb.append('\t').append(k);
+        sb.append('\n');
+
+        int count = 0;
+        for (Node n : nodes) {
+            if (n.data.get("root_color") == null) continue;
+            Map<String, String> row = buildDataRow(n);
+            sb.append(n.text == null ? "" : n.text);
+            for (String k : allKeys) {
+                sb.append('\t');
+                String v = row.get(k);
+                if (v != null) sb.append(v);
+            }
+            sb.append('\n');
+            count++;
+        }
+
+        Files.write(Paths.get(path), sb.toString().getBytes("UTF-8"));
+        System.out.printf("    TSV root_color       : %d nodi → %s%n", count, path);
+    }
+
+    /** Costruisce la mappa chiave→valore effettiva di un nodo (come in writeJson). */
+    private Map<String, String> buildDataRow(Node n) {
+        Map<String, String> row = new LinkedHashMap<>();
+        row.put("hier_label",   n.hierLabel   == null ? "" : n.hierLabel);
+        row.put("hier_label16", n.hierLabel16 == null ? "" : n.hierLabel16);
+        row.put("hier_label32", n.hierLabel32 == null ? "" : n.hierLabel32);
+        row.putAll(n.data);
+        return row;
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
     //  Serializzazione JSON
     // ════════════════════════════════════════════════════════════════════════
     private void writeJson(List<Node> nodes, String path) throws Exception {
@@ -240,9 +402,11 @@ public class JstreeLabeler {
             sb.append("    \"text\": \""         ).append(esc(n.text))      .append("\",\n");
             sb.append("    \"hier_label\": \""   ).append(esc(n.hierLabel)).append("\"");
 
-            // "data": hier_label come primo campo, poi tutti gli originali
+            // "data": hier_label* come primi campi, poi tutti gli originali
             Map<String, String> dataOut = new LinkedHashMap<>();
-            dataOut.put("hier_label", n.hierLabel == null ? "" : n.hierLabel);
+            dataOut.put("hier_label",   n.hierLabel   == null ? "" : n.hierLabel);
+            dataOut.put("hier_label16", n.hierLabel16 == null ? "" : n.hierLabel16);
+            dataOut.put("hier_label32", n.hierLabel32 == null ? "" : n.hierLabel32);
             dataOut.putAll(n.data);
 
             sb.append(",\n    \"data\": {\n");

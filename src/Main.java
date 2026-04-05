@@ -332,7 +332,9 @@ public class Main {
         System.out.println("║    Aggiunge label gerarchiche: 0 / 1 / 1.1 / 1.2 …          ║");
         System.out.println("║                                                              ║");
         System.out.println("║  java -cp bin Main json2nexus <in.json> <out.nexus>          ║");
-        System.out.println("║    Ricostruisce NEXUS dagli attributi JSON                   ║");
+        System.out.println("║    Ricostruisce NEXUS dagli attributi JSON; produce anche:   ║");
+        System.out.println("║      out.nwk     albero senza annotazioni (nomi+branch_len)  ║");
+        System.out.println("║      out.tsv     tabella sample + tutti gli attributi data   ║");
         System.out.println("║                                                              ║");
         System.out.println("║  java -cp bin Main colorize <in.json> <colors.csv> <out.json>║");
         System.out.println("║    Assegna colori (data.color) ai nodi dal CSV codice/colore ║");

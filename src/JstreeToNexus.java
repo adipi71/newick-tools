@@ -17,6 +17,10 @@ import java.util.*;
  *   data.branch_length    →  :valore
  *   data.hier_label       →  [&!hier_label=val]
  *
+ * Oltre al file NEXUS, produce nella stessa cartella:
+ *   output.nwk     —  albero Newick senza annotazioni (solo nomi e branch_length)
+ *   output.tsv     —  tabella TSV: colonna 'sample' + tutte le chiavi di data
+ *
  * Chiamato da Main oppure direttamente:
  *   new JstreeToNexus().process("input.json", "output.nexus");
  */
@@ -67,6 +71,19 @@ public class JstreeToNexus {
 
         String newick = buildNewick(root, byId);
         writeNexus(newick, outputPath);
+
+        // File Newick senza annotazioni (con apici)
+        String base = outputPath.replaceAll("\\.[^.]+$", "");
+        String newickPath = base + ".nwk";
+        writeNewick(buildPlainNewick(root, byId, true), newickPath);
+
+        // File Newick senza annotazioni e senza apici
+        String newickNqPath = base + "_noquote.nwk";
+        writeNewick(buildPlainNewick(root, byId, false), newickNqPath);
+
+        // File TSV
+        String tsvPath = base + ".tsv";
+        writeTsv(nodes, tsvPath);
 
         // Statistiche
         long leaves   = nodes.stream().filter(n -> n.childIds.isEmpty()).count();
@@ -135,6 +152,89 @@ public class JstreeToNexus {
             }
         }
         return result;
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
+    //  Newick senza annotazioni: solo nomi e lunghezze di ramo
+    // ════════════════════════════════════════════════════════════════════════
+    private String buildPlainNewick(Node root, Map<String, Node> byId, boolean quote) {
+        Deque<Object[]> stack = new ArrayDeque<>();
+        stack.push(new Object[]{root, 0, new ArrayList<String>()});
+
+        String result = null;
+        while (!stack.isEmpty()) {
+            Object[] frame   = stack.peek();
+            Node     current = (Node)         frame[0];
+            int      idx     = (int)           frame[1];
+            @SuppressWarnings("unchecked")
+            List<String> childNewick = (List<String>) frame[2];
+
+            if (idx < current.childIds.size()) {
+                frame[1] = idx + 1;
+                Node child = byId.get(current.childIds.get(idx));
+                if (child != null) stack.push(new Object[]{child, 0, new ArrayList<String>()});
+            } else {
+                stack.pop();
+                StringBuilder sb = new StringBuilder();
+                if (current.childIds.isEmpty()) {
+                    sb.append(quote ? quoteNewickName(current.text)
+                                    : (current.text == null ? "" : current.text));
+                } else {
+                    sb.append("(");
+                    for (int i = 0; i < childNewick.size(); i++) {
+                        if (i > 0) sb.append(",");
+                        sb.append(childNewick.get(i));
+                    }
+                    sb.append(")");
+                    if (current.text != null && !current.text.isEmpty())
+                        sb.append(quote ? quoteNewickName(current.text) : current.text);
+                }
+                boolean isRoot = "#".equals(current.parent);
+                if (!isRoot) {
+                    String bl = current.data.get("branch_length");
+                    sb.append((bl != null && !bl.isEmpty()) ? ":" + bl : ":0.0");
+                }
+                String token = sb.toString();
+                if (stack.isEmpty()) {
+                    result = token;
+                } else {
+                    @SuppressWarnings("unchecked")
+                    List<String> parentList = (List<String>) stack.peek()[2];
+                    parentList.add(token);
+                }
+            }
+        }
+        return result;
+    }
+
+    private void writeNewick(String newick, String path) throws Exception {
+        Files.write(Paths.get(path), (newick + ";\n").getBytes("UTF-8"));
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
+    //  TSV: sample + tutti gli attributi di data
+    // ════════════════════════════════════════════════════════════════════════
+    private void writeTsv(List<Node> nodes, String path) throws Exception {
+        // Raccoglie tutte le chiavi nell'ordine di prima comparsa
+        LinkedHashSet<String> allKeys = new LinkedHashSet<>();
+        for (Node n : nodes) allKeys.addAll(n.data.keySet());
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("sample");
+        for (String k : allKeys) sb.append('\t').append(k);
+        sb.append('\n');
+
+        for (Node n : nodes) {
+            sb.append(n.text == null ? "" : n.text);
+            for (String k : allKeys) {
+                sb.append('\t');
+                String v = n.data.get(k);
+                if (v != null) sb.append(v);
+            }
+            sb.append('\n');
+        }
+
+        Files.write(Paths.get(path), sb.toString().getBytes("UTF-8"));
     }
 
     // ════════════════════════════════════════════════════════════════════════

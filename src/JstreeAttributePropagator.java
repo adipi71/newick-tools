@@ -77,6 +77,10 @@ public class JstreeAttributePropagator {
         // ── Assegna root_attribute ──────────────────────────────────────
         assignRootLabels(nodes, attribute);
 
+        // ── Scrive TSV dei nodi root_attribute ───────────────────────────
+        String rootsTsv = outputPath.replaceAll("\\.[^.]+$", "") + "_roots.tsv";
+        writeRootsTsv(nodes, rootsTsv);
+
         writeJson(nodes, outputPath);
     }
 
@@ -287,6 +291,24 @@ public class JstreeAttributePropagator {
     private int skipWS(String s, int i) {
         while (i < s.length() && Character.isWhitespace(s.charAt(i))) i++;
         return i;
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
+    //  TSV dei nodi con root_attribute: sample, hier_label, root_attribute
+    // ════════════════════════════════════════════════════════════════════════
+    private void writeRootsTsv(List<Node> nodes, String path) throws Exception {
+        StringBuilder sb = new StringBuilder();
+        sb.append("sample\thier_label\troot_attribute\n");
+        for (Node n : nodes) {
+            String ra = n.data.get("root_attribute");
+            if (ra == null) continue;
+            sb.append(n.text   == null ? "" : n.text).append('\t');
+            sb.append(n.hierLabel == null ? "" : n.hierLabel).append('\t');
+            sb.append(ra).append('\n');
+        }
+        Files.write(Paths.get(path), sb.toString().getBytes("UTF-8"));
+        long count = sb.toString().chars().filter(c -> c == '\n').count() - 1;
+        System.out.printf("    Root nodes TSV           : %d nodi → %s%n", count, path);
     }
 
     // ════════════════════════════════════════════════════════════════════════
