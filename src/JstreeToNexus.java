@@ -34,6 +34,11 @@ public class JstreeToNexus {
     // ── Campi senza prefisso '!' ───────────────────────────────────────────────
     private static final Set<String> NO_BANG = new HashSet<>(Arrays.asList("label"));
 
+    // ── Campi il cui valore va quotato come stringa ───────────────────────────
+    private static final Set<String> STRING_FIELDS = new HashSet<>(Arrays.asList(
+            "hier_label", "hier_label16", "hier_label32"
+    ));
+
     // ── Rappresentazione interna del nodo ────────────────────────────────────
     static class Node {
         String              id;
@@ -266,7 +271,10 @@ public class JstreeToNexus {
             if (k.equals("color") || k.equals("hilight")
                     || k.equals("label") || k.equals("annotation_name")) continue;
 
-            parts.add((NO_BANG.contains(k) ? "" : "!") + k + "=" + e.getValue());
+            String val = STRING_FIELDS.contains(k)
+                    ? "\"" + esc(e.getValue()) + "\""
+                    : e.getValue();
+            parts.add((NO_BANG.contains(k) ? "" : "!") + k + "=" + val);
         }
         return parts;
     }

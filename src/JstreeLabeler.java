@@ -100,6 +100,7 @@ public class JstreeLabeler {
         String base = outputPath.replaceAll("\\.[^.]+$", "");
         writeTsv(nodes, base + ".tsv");
         writeRootColorTsv(nodes, base + "_root_colors.tsv");
+        writePeartreeNexus(nodes, root, byId, base + "_peartree.nexus");
     }
 
     // ════════════════════════════════════════════════════════════════════════
@@ -386,6 +387,103 @@ public class JstreeLabeler {
         row.put("hier_label32", n.hierLabel32 == null ? "" : n.hierLabel32);
         row.putAll(n.data);
         return row;
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
+    //  NEXUS compatibile peartree: annotazioni [&key="val"] senza prefisso !
+    // ════════════════════════════════════════════════════════════════════════
+    private void writePeartreeNexus(List<Node> nodes, Node root,
+                                    Map<String, Node> byId, String path) throws Exception {
+        String newick = buildPeartreeNewick(root, byId);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("#NEXUS\n");
+        sb.append("begin trees;\n");
+        sb.append("\ttree tree_1 = [&R] ").append(newick).append(";\n");
+        sb.append("end;\n");
+        Files.write(Paths.get(path), sb.toString().getBytes("UTF-8"));
+        System.out.printf("    Peartree NEXUS       : %s%n", path);
+    }
+
+    private String buildPeartreeNewick(Node root, Map<String, Node> byId) {
+        Deque<Object[]> stack = new ArrayDeque<>();
+        stack.push(new Object[]{root, 0, new ArrayList<String>()});
+
+        String result = null;
+        while (!stack.isEmpty()) {
+            Object[] frame   = stack.peek();
+            Node     current = (Node)         frame[0];
+            int      idx     = (int)           frame[1];
+            @SuppressWarnings("unchecked")
+            List<String> childNewick = (List<String>) frame[2];
+
+            if (idx < current.childIds.size()) {
+                frame[1] = idx + 1;
+                Node child = byId.get(current.childIds.get(idx));
+                if (child != null) stack.push(new Object[]{child, 0, new ArrayList<String>()});
+            } else {
+                stack.pop();
+                StringBuilder sb = new StringBuilder();
+
+                if (current.childIds.isEmpty()) {
+                    sb.append(current.text == null ? "" : current.text);
+                } else {
+                    sb.append("(");
+                    for (int i = 0; i < childNewick.size(); i++) {
+                        if (i > 0) sb.append(",");
+                        sb.append(childNewick.get(i));
+                    }
+                    sb.append(")");
+                    if (current.text != null && !current.text.isEmpty())
+                        sb.append(current.text);
+                }
+
+                String annot = buildPeartreeAnnotation(current);
+                if (!annot.isEmpty()) sb.append(annot);
+
+                boolean isRoot = "#".equals(current.parent);
+                if (!isRoot) {
+                    String bl = current.data.get("branch_length");
+                    sb.append((bl != null && !bl.isEmpty()) ? ":" + bl : ":0.0");
+                }
+
+                String token = sb.toString();
+                if (stack.isEmpty()) {
+                    result = token;
+                } else {
+                    @SuppressWarnings("unchecked")
+                    List<String> parentList = (List<String>) stack.peek()[2];
+                    parentList.add(token);
+                }
+            }
+        }
+        return result;
+    }
+
+    private String buildPeartreeAnnotation(Node n) {
+        List<String> parts = new ArrayList<>();
+
+        // hier_label* dai campi dedicati del nodo
+        if (n.hierLabel   != null) parts.add("hier_label=\""   + esc(n.hierLabel)   + "\"");
+        if (n.hierLabel16 != null) parts.add("hier_label16=\"" + esc(n.hierLabel16) + "\"");
+        if (n.hierLabel32 != null) parts.add("hier_label32=\"" + esc(n.hierLabel32) + "\"");
+
+        // tutti gli altri campi data (escluso branch_length e hier_label* già scritti)
+        for (Map.Entry<String, String> e : n.data.entrySet()) {
+            String k = e.getKey();
+            if (k.equals("branch_length") ||
+                k.equals("hier_label") || k.equals("hier_label16") || k.equals("hier_label32"))
+                continue;
+            parts.add(k + "=\"" + esc(e.getValue()) + "\"");
+        }
+
+        // user_colour = color (campo richiesto da peartree)
+        String color = n.data.get("color");
+        if (color != null && !color.isEmpty())
+            parts.add("user_colour=\"" + esc(color) + "\"");
+
+        if (parts.isEmpty()) return "";
+        return "[&" + String.join(",", parts) + "]";
     }
 
     // ════════════════════════════════════════════════════════════════════════
