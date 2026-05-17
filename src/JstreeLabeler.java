@@ -33,6 +33,7 @@ public class JstreeLabeler {
         String parent;
         String text;
         String hierLabel;
+        String hierLabel2;
         String hierLabel16;
         String hierLabel32;
         final Map<String, String> data    = new LinkedHashMap<>();
@@ -67,6 +68,7 @@ public class JstreeLabeler {
 
         // Assegna label gerarchiche con BFS
         root.hierLabel   = "0";
+        root.hierLabel2  = "0";
         root.hierLabel16 = "0";
         root.hierLabel32 = "0";
         Queue<String> queue = new ArrayDeque<>();
@@ -86,6 +88,7 @@ public class JstreeLabeler {
                 child.hierLabel   = "0".equals(base)
                         ? String.valueOf(position)
                         : base + "." + position;
+                child.hierLabel2  = toHierLabel2(child.hierLabel);
                 child.hierLabel16 = toHierLabel16(child.hierLabel);
                 child.hierLabel32 = toHierLabel32(child.hierLabel);
 
@@ -156,25 +159,46 @@ public class JstreeLabeler {
     }
 
     // ════════════════════════════════════════════════════════════════════════
-    //  Codifica hier_label in base 16 e base 32
+    //  hier_label2:  per ogni segmento s di hier_label
+    //    s == 1  →  "1"   (primo figlio, marcatore invariato)
+    //    s >  1  →  (s-1) come stringa binaria a 4 bit, con punto tra le cifre
+    //               es. 2→(1)→"0.0.0.1",  3→(2)→"0.0.1.0",  5→(4)→"0.1.0.0"
     //
-    //  Ogni segmento di hier_label viene mappato come (valore - 1) = bit.
-    //  I segmenti vengono raggruppati da sinistra; l'ultimo gruppo viene
-    //  completato con bit 0 a destra prima della conversione.
-    //
-    //  Base16: gruppi da 4 segmenti → cifra 0-9A-F (4 bit)
-    //  Base32: gruppi da 5 segmenti → cifra 0-9A-V (5 bit)
+    //  hier_label16 e hier_label32 vengono poi calcolati dai segmenti di label2,
+    //  raggruppando rispettivamente in 4 e 5 bit per carattere.
+    //    Base16: gruppi da 4 bit → cifra 0-9A-F
+    //    Base32: gruppi da 5 bit → cifra 0-9A-V
     // ════════════════════════════════════════════════════════════════════════
-    static String toHierLabel16(String hierLabel) {
+    static String toHierLabel2(String hierLabel) {
         if (hierLabel == null || hierLabel.isEmpty() || "0".equals(hierLabel)) return "0";
         String[] parts = hierLabel.split("\\.");
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < parts.length; i += 4) {
+        for (int i = 0; i < parts.length; i++) {
+            if (i > 0) sb.append(".");
+            int reduced = Integer.parseInt(parts[i]) - 1;  // 1→0, 2→1, 3→2, …
+            if (reduced <= 1) {
+                sb.append(reduced);
+            } else {
+                // encode reduced as 4-bit binary with dots between digits
+                String bin = String.format("%4s", Integer.toBinaryString(reduced)).replace(' ', '0');
+                for (int b = 0; b < bin.length(); b++) {
+                    if (b > 0) sb.append(".");
+                    sb.append(bin.charAt(b));
+                }
+            }
+        }
+        return sb.toString();
+    }
+
+    static String toHierLabel16(String hierLabel) {
+        if (hierLabel == null || hierLabel.isEmpty() || "0".equals(hierLabel)) return "0";
+        String[] bits = toHierLabel2(hierLabel).split("\\.");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < bits.length; i += 4) {
             int val = 0;
-            int end = Math.min(i + 4, parts.length);
+            int end = Math.min(i + 4, bits.length);
             for (int j = i; j < end; j++)
-                val = val * 2 + (Integer.parseInt(parts[j]) - 1);
-            // right-pad con 0 i bit mancanti nell'ultimo gruppo
+                val = val * 2 + Integer.parseInt(bits[j]);
             for (int j = end; j < i + 4; j++) val *= 2;
             sb.append(Integer.toHexString(val).toUpperCase());
         }
@@ -184,13 +208,13 @@ public class JstreeLabeler {
     static String toHierLabel32(String hierLabel) {
         if (hierLabel == null || hierLabel.isEmpty() || "0".equals(hierLabel)) return "0";
         final String CHARS = "0123456789ABCDEFGHIJKLMNOPQRSTUV";
-        String[] parts = hierLabel.split("\\.");
+        String[] bits = toHierLabel2(hierLabel).split("\\.");
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < parts.length; i += 5) {
+        for (int i = 0; i < bits.length; i += 5) {
             int val = 0;
-            int end = Math.min(i + 5, parts.length);
+            int end = Math.min(i + 5, bits.length);
             for (int j = i; j < end; j++)
-                val = val * 2 + (Integer.parseInt(parts[j]) - 1);
+                val = val * 2 + Integer.parseInt(bits[j]);
             for (int j = end; j < i + 5; j++) val *= 2;
             sb.append(CHARS.charAt(val & 31));
         }
@@ -322,6 +346,7 @@ public class JstreeLabeler {
     private void writeTsv(List<Node> nodes, String path) throws Exception {
         LinkedHashSet<String> allKeys = new LinkedHashSet<>();
         allKeys.add("hier_label");
+        allKeys.add("hier_label2");
         allKeys.add("hier_label16");
         allKeys.add("hier_label32");
         for (Node n : nodes) allKeys.addAll(n.data.keySet());
@@ -352,6 +377,7 @@ public class JstreeLabeler {
     private void writeRootColorTsv(List<Node> nodes, String path) throws Exception {
         LinkedHashSet<String> allKeys = new LinkedHashSet<>();
         allKeys.add("hier_label");
+        allKeys.add("hier_label2");
         allKeys.add("hier_label16");
         allKeys.add("hier_label32");
         for (Node n : nodes) allKeys.addAll(n.data.keySet());
@@ -383,6 +409,7 @@ public class JstreeLabeler {
     private Map<String, String> buildDataRow(Node n) {
         Map<String, String> row = new LinkedHashMap<>();
         row.put("hier_label",   n.hierLabel   == null ? "" : n.hierLabel);
+        row.put("hier_label2",  n.hierLabel2  == null ? "" : n.hierLabel2);
         row.put("hier_label16", n.hierLabel16 == null ? "" : n.hierLabel16);
         row.put("hier_label32", n.hierLabel32 == null ? "" : n.hierLabel32);
         row.putAll(n.data);
@@ -465,6 +492,7 @@ public class JstreeLabeler {
 
         // hier_label* dai campi dedicati del nodo
         if (n.hierLabel   != null) parts.add("hier_label=\""   + esc(n.hierLabel)   + "\"");
+        if (n.hierLabel2  != null) parts.add("hier_label2=\""  + esc(n.hierLabel2)  + "\"");
         if (n.hierLabel16 != null) parts.add("hier_label16=\"" + esc(n.hierLabel16) + "\"");
         if (n.hierLabel32 != null) parts.add("hier_label32=\"" + esc(n.hierLabel32) + "\"");
 
@@ -472,7 +500,8 @@ public class JstreeLabeler {
         for (Map.Entry<String, String> e : n.data.entrySet()) {
             String k = e.getKey();
             if (k.equals("branch_length") ||
-                k.equals("hier_label") || k.equals("hier_label16") || k.equals("hier_label32"))
+                k.equals("hier_label") || k.equals("hier_label2") ||
+                k.equals("hier_label16") || k.equals("hier_label32"))
                 continue;
             parts.add(k + "=\"" + esc(e.getValue()) + "\"");
         }
@@ -498,14 +527,23 @@ public class JstreeLabeler {
             sb.append("    \"id\": \""          ).append(esc(n.id))        .append("\",\n");
             sb.append("    \"parent\": \""       ).append(esc(n.parent))    .append("\",\n");
             sb.append("    \"text\": \""         ).append(esc(n.text))      .append("\",\n");
-            sb.append("    \"hier_label\": \""   ).append(esc(n.hierLabel)).append("\"");
+            sb.append("    \"hier_label\": \""   ).append(esc(n.hierLabel)).append("\",\n");
+            sb.append("    \"hier_label2\": \""  ).append(esc(n.hierLabel2)).append("\"");
 
-            // "data": hier_label* come primi campi, poi tutti gli originali
+            // "data": hier_label* come primi campi, poi tutti gli originali;
+            // i valori calcolati vengono re-imposti dopo putAll per sovrascrivere
+            // eventuali etichette obsolete già presenti nel blocco data di input.
             Map<String, String> dataOut = new LinkedHashMap<>();
             dataOut.put("hier_label",   n.hierLabel   == null ? "" : n.hierLabel);
+            dataOut.put("hier_label2",  n.hierLabel2  == null ? "" : n.hierLabel2);
             dataOut.put("hier_label16", n.hierLabel16 == null ? "" : n.hierLabel16);
             dataOut.put("hier_label32", n.hierLabel32 == null ? "" : n.hierLabel32);
             dataOut.putAll(n.data);
+            // restore freshly computed labels (putAll may have overwritten them)
+            dataOut.put("hier_label",   n.hierLabel   == null ? "" : n.hierLabel);
+            dataOut.put("hier_label2",  n.hierLabel2  == null ? "" : n.hierLabel2);
+            dataOut.put("hier_label16", n.hierLabel16 == null ? "" : n.hierLabel16);
+            dataOut.put("hier_label32", n.hierLabel32 == null ? "" : n.hierLabel32);
 
             sb.append(",\n    \"data\": {\n");
             int j = 0;

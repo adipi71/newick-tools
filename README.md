@@ -1,21 +1,22 @@
 # Nexus Tree Tools
 
-Conversione bidirezionale tra file NEXUS (FigTree) e JSON jsTree.
+**Core purpose**: Bidirectional conversion between NEXUS tree files (used by FigTree) and JSON (jsTree format), with annotation enrichment along the way.
+Java pipeline to convert and annotate phylogenetic NEXUS trees: parses NEXUS to JSON, adds hierarchical labels, and writes back to NEXUS and Newick formats
+                                                                                                                            
+**Pipeline:**
 
-```
-resources/
-├── WND_L2.nexus             ← file NEXUS di default
-└── Giuliano_colours.nexus   ← file NEXUS di default
+1. NEXUS → JSON (NexusToJstree.java) — parses a .nexus phylogenetic tree file and flattens it into a jsTree-compatible JSON, preserving node attributes like colors, highlights, branch lengths, and labels.                                     
+2. JSON labeling (JstreeLabeler.java) — adds hierarchical labels (hier_label) to each node (e.g. 1.2.3) and color/highlight propagation from parent to child nodes.                                                                   
+3. JSON → NEXUS (JstreeToNexus.java) — reconstructs an annotated .nexus file from the labeled JSON, also producing plain Newick (.nwk) and a peartree-compatible NEXUS variant.
+                                                                                                                            
+**Output formats:**
 
-src/
-├── Main.java                ← entry point CLI
-├── NexusToJstree.java       ← NEXUS → JSON jstree
-├── JstreeLabeler.java       ← JSON → JSON + label gerarchica
-└── JstreeToNexus.java       ← JSON → NEXUS annotato
-
-output/                      ← generato automaticamente
-```
-
+  - Labeled JSON with hierarchy metadata                                                                                    
+  - TSV tables of all nodes             
+  - Annotated NEXUS (FigTree)
+  - Plain Newick (with/without quotes)                                                                                      
+  - peartree-compatible NEXUS         
+                                                                                                                     
 ---
 
 ## Quick and dirty
@@ -24,19 +25,41 @@ output/                      ← generato automaticamente
 ./label_and_nexus.sh resources/WND_L2.nexus output
 ```
 
-Compila, etichetta e converte in un colpo solo. Produce in `output/`:
+`label_and_nexus.sh` — a shell script that compiles and runs the full pipeline in one shot on a given `.nexus` file. Here using the example input file in `resources/WND_L2.nexus`. 
+                         
 
-- `WND_L2.json` — JSON jstree flat
-- `WND_L2_labeled.json` — JSON con `hier_label`, `hier_label16`, `hier_label32`, `root_color`
-- `WND_L2_labeled.tsv` — tabella completa di tutti i nodi
-- `WND_L2_labeled_root_colors.tsv` — soli nodi radice per colore
-- `WND_L2_labeled.nexus` — NEXUS annotato (FigTree)
-- `WND_L2_labeled.nwk` — Newick puro con apici
-- `WND_L2_labeled_noquote.nwk` — Newick puro senza apici
+
+Compiles, labels and converts in one shot. Produces in `output/`:
+
+- `WND_L2.json` — flat jstree JSON
+- `WND_L2_labeled.json` — JSON with `hier_label`, `hier_label16`, `hier_label32`, `root_color`
+- `WND_L2_labeled.tsv` — complete table of all nodes
+- `WND_L2_labeled_root_colors.tsv` — root nodes only, by color
+- `WND_L2_labeled.nexus` — annotated NEXUS (FigTree)
+- `WND_L2_labeled.nwk` — plain Newick with quotes
+- `WND_L2_labeled_noquote.nwk` — plain Newick without quotes
+- `WND_L2_labeled_peartree.nexus` — peartree-compatible NEXUS (`[&key="val"]`)
 
 ---
 
-## Compilazione
+## Main files
+
+```
+resources/
+├── WND_L2.nexus             ← default NEXUS file
+└── Giuliano_colours.nexus   ← default NEXUS file
+
+src/
+├── Main.java                ← CLI entry point
+├── NexusToJstree.java       ← NEXUS → JSON jstree
+├── JstreeLabeler.java       ← JSON → JSON + hierarchical label
+└── JstreeToNexus.java       ← JSON → annotated NEXUS
+
+output/                      ← generated automatically
+```
+
+
+## Build
 
 ```bash
 mkdir -p bin
@@ -45,19 +68,19 @@ javac src/*.java -d bin
 
 ---
 
-## Utilizzo
+## Usage
 
-### Pipeline completa sui file default
+### Full pipeline on default files
 
 ```bash
 java -cp bin Main
 ```
 
-Esegue la pipeline su tutti i file `.nexus` in `resources/` e salva i risultati in `output/`.
+Runs the pipeline on all `.nexus` files in `resources/` and saves results to `output/`.
 
 ---
 
-### Comandi singoli
+### Individual commands
 
 #### NEXUS → JSON jstree
 
@@ -65,29 +88,29 @@ Esegue la pipeline su tutti i file `.nexus` in `resources/` e salva i risultati 
 java -cp bin Main nexus2json resources/WND_L2.nexus output/WND_L2.json
 ```
 
-Ogni nodo diventa un oggetto flat `{ id, parent, text, data: { color, hilight, label, branch_length, ... } }`.
+Each node becomes a flat object `{ id, parent, text, data: { color, hilight, label, branch_length, ... } }`.
 
 ---
 
-#### JSON → JSON + label gerarchica
+#### JSON → JSON + hierarchical label
 
 ```bash
 java -cp bin Main label output/WND_L2.json output/WND_L2_labeled.json
 ```
 
-Aggiunge `hier_label` a ogni nodo:
+Adds `hier_label` to each node:
 
-| Nodo        | hier_label |
+| Node        | hier_label |
 |-------------|------------|
-| Radice      | `0`        |
-| 1° figlio   | `1`        |
-| 2° figlio   | `2`        |
-| figlio di 1 | `1.1`      |
-| figlio di 2 | `2.1`      |
+| Root        | `0`        |
+| 1st child   | `1`        |
+| 2nd child   | `2`        |
+| child of 1  | `1.1`      |
+| child of 2  | `2.1`      |
 
 ---
 
-#### JSON → NEXUS ricostruito
+#### JSON → reconstructed NEXUS
 
 ```bash
 java -cp bin Main json2nexus output/WND_L2_labeled.json output/WND_L2_reconstructed.nexus
@@ -95,13 +118,13 @@ java -cp bin Main json2nexus output/WND_L2_labeled.json output/WND_L2_reconstruc
 
 ---
 
-#### Pipeline completa su file singolo
+#### Full pipeline on a single file
 
 ```bash
 java -cp bin Main pipeline resources/WND_L2.nexus output/
 ```
 
-Genera in `output/`:
+Produces in `output/`:
 - `WND_L2.json`
 - `WND_L2_labeled.json`
 - `WND_L2_reconstructed.nexus`
@@ -116,31 +139,31 @@ java -cp bin Main help
 
 ---
 
-## Mapping annotazioni
+## Annotation mapping
 
-| Campo in `data`      | Annotazione Newick        |
+| Field in `data`      | Newick annotation         |
 |----------------------|---------------------------|
 | `color`              | `[&!color=#rrggbb]`       |
 | `hilight`            | `[&!hilight={n,v,#color}]`|
 | `label`              | `[&label=N]`              |
-| `annotation_name`    | `[&!name="valore"]`       |
-| altri campi custom   | `[&!chiave=valore]`       |
-| `branch_length`      | `:valore`                 |
-| `hier_label`         | ignorato                  |
+| `annotation_name`    | `[&!name="value"]`        |
+| other custom fields  | `[&!key=value]`           |
+| `branch_length`      | `:value`                  |
+| `hier_label`         | ignored                   |
 
 ---
 
 ## VS Code
 
-Apri la cartella `nexus-tree-tools/` in VS Code.  
-Il progetto è preconfigurato con sette configurazioni di debug in `.vscode/launch.json`:
+Open the `nexus-tree-tools/` folder in VS Code.  
+The project comes preconfigured with seven debug configurations in `.vscode/launch.json`:
 
-- **Default pipeline** — pipeline su entrambi i file default
-- **Pipeline su WND_L2.nexus**
-- **Pipeline su Giuliano_colours.nexus**
-- **Solo nexus2json** / **Solo label** / **Solo json2nexus** — passi individuali
-- **Mostra help**
+- **Default pipeline** — pipeline on both default files
+- **Pipeline on WND_L2.nexus**
+- **Pipeline on Giuliano_colours.nexus**
+- **nexus2json only** / **label only** / **json2nexus only** — individual steps
+- **Show help**
 
-Premi `F5` o apri *Run and Debug* (`Ctrl+Shift+D`) e scegli la configurazione.
+Press `F5` or open *Run and Debug* (`Ctrl+Shift+D`) and choose a configuration.
 
-> **Prerequisito**: estensione *Extension Pack for Java* (`vscjava.vscode-java-pack`).
+> **Prerequisite**: *Extension Pack for Java* extension (`vscjava.vscode-java-pack`).

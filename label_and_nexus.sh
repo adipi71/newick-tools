@@ -46,4 +46,5 @@ ls -lh "$LABELED" \
         "$OUT_DIR/${BASE}_labeled_root_colors.tsv" \
         "$NEXUS_OUT" \
         "$OUT_DIR/${BASE}_labeled.nwk" \
-        "$OUT_DIR/${BASE}_labeled_noquote.nwk"
+        "$OUT_DIR/${BASE}_labeled_noquote.nwk" \
+        "$OUT_DIR/${BASE}_labeled_peartree.nexus"

@@ -7,14 +7,14 @@ import java.util.*;
  * ║              Nexus Tree Tools  –  Main entry point           ║
  * ╠══════════════════════════════════════════════════════════════╣
  * ║                                                              ║
- * ║  Tre operazioni disponibili:                                 ║
+ * ║  Operazioni disponibili:                                      ║
  * ║                                                              ║
- * ║  nexus2json  →  NexusToJstree   (NEXUS  → JSON jstree)      ║
- * ║  label       →  JstreeLabeler   (JSON   → JSON + hier_label) ║
- * ║  json2nexus  →  JstreeToNexus   (JSON   → NEXUS annotato)   ║
- * ║  colorize    →  JstreeColorizer    (CSV + JSON → JSON colorato)     ║
- * ║  propagate   →  JstreeAttributePropagator (propaga attributo bottom-up) ║
- * ║  pipeline    →  tutte e tre in sequenza                      ║
+ * ║  nexus2json  →  NexusToJstree          (NEXUS → JSON)        ║
+ * ║  label       →  JstreeLabeler          (JSON  → JSON+labels) ║
+ * ║  json2nexus  →  JstreeToNexus          (JSON  → NEXUS)       ║
+ * ║  colorize    →  JstreeColorizer        (CSV+JSON → JSON)     ║
+ * ║  propagate   →  JstreeAttributePropagator (bottom-up)        ║
+ * ║  pipeline    →  nexus2json + label + json2nexus              ║
  * ║                                                              ║
  * ╠══════════════════════════════════════════════════════════════╣
  * ║  UTILIZZO                                                    ║
