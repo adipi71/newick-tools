@@ -89,8 +89,8 @@ public class JstreeLabeler {
                         ? String.valueOf(position)
                         : base + "." + position;
                 child.hierLabel2  = toHierLabel2(child.hierLabel);
-                child.hierLabel16 = toHierLabel16(child.hierLabel);
-                child.hierLabel32 = toHierLabel32(child.hierLabel);
+                child.hierLabel16 = toHierLabel16(child.hierLabel2);
+                child.hierLabel32 = toHierLabel32(child.hierLabel2);
 
                 queue.add(childId);
             }
@@ -160,14 +160,15 @@ public class JstreeLabeler {
 
     // ════════════════════════════════════════════════════════════════════════
     //  hier_label2:  per ogni segmento s di hier_label
-    //    s == 1  →  "1"   (primo figlio, marcatore invariato)
-    //    s >  1  →  (s-1) come stringa binaria a 4 bit, con punto tra le cifre
-    //               es. 2→(1)→"0.0.0.1",  3→(2)→"0.0.1.0",  5→(4)→"0.1.0.0"
+    //    s == 1  →  "0"   (ridotto di 1, ≤ 1 → cifra singola)
+    //    s == 2  →  "1"   (ridotto di 1, ≤ 1 → cifra singola)
+    //    s >  2  →  (s-1) come stringa binaria a 4 bit, con punto tra le cifre
+    //               es. 3→(2)→"0.0.1.0",  5→(4)→"0.1.0.0"
     //
-    //  hier_label16 e hier_label32 vengono poi calcolati dai segmenti di label2,
-    //  raggruppando rispettivamente in 4 e 5 bit per carattere.
-    //    Base16: gruppi da 4 bit → cifra 0-9A-F
-    //    Base32: gruppi da 5 bit → cifra 0-9A-V
+    //  hier_label16: hier_label2 diviso in blocchi da 4 cifre (sinistra→destra),
+    //                ultimo blocco zero-padded a destra → cifra 0-9A-F per blocco
+    //  hier_label32: hier_label2 diviso in blocchi da 5 cifre,
+    //                stesso schema → cifra 0-9A-V per blocco
     // ════════════════════════════════════════════════════════════════════════
     static String toHierLabel2(String hierLabel) {
         if (hierLabel == null || hierLabel.isEmpty() || "0".equals(hierLabel)) return "0";
@@ -190,32 +191,38 @@ public class JstreeLabeler {
         return sb.toString();
     }
 
-    static String toHierLabel16(String hierLabel) {
-        if (hierLabel == null || hierLabel.isEmpty() || "0".equals(hierLabel)) return "0";
-        String[] bits = toHierLabel2(hierLabel).split("\\.");
+    // Riceve hier_label2 direttamente (cifre 0/1 separate da punto).
+    // Divide in blocchi da 4 cifre (zero-pad a destra sull'ultimo blocco)
+    // e converte ogni blocco in una cifra esadecimale.
+    static String toHierLabel16(String label2) {
+        if (label2 == null || label2.isEmpty() || "0".equals(label2)) return "0";
+        String[] bits = label2.split("\\.");
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < bits.length; i += 4) {
             int val = 0;
             int end = Math.min(i + 4, bits.length);
             for (int j = i; j < end; j++)
                 val = val * 2 + Integer.parseInt(bits[j]);
-            for (int j = end; j < i + 4; j++) val *= 2;
+            for (int j = end; j < i + 4; j++) val *= 2;   // zero-pad a destra
             sb.append(Integer.toHexString(val).toUpperCase());
         }
         return sb.toString();
     }
 
-    static String toHierLabel32(String hierLabel) {
-        if (hierLabel == null || hierLabel.isEmpty() || "0".equals(hierLabel)) return "0";
+    // Riceve hier_label2 direttamente (cifre 0/1 separate da punto).
+    // Divide in blocchi da 5 cifre (zero-pad a destra sull'ultimo blocco)
+    // e converte ogni blocco in una cifra base32 (0-9A-V).
+    static String toHierLabel32(String label2) {
+        if (label2 == null || label2.isEmpty() || "0".equals(label2)) return "0";
         final String CHARS = "0123456789ABCDEFGHIJKLMNOPQRSTUV";
-        String[] bits = toHierLabel2(hierLabel).split("\\.");
+        String[] bits = label2.split("\\.");
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < bits.length; i += 5) {
             int val = 0;
             int end = Math.min(i + 5, bits.length);
             for (int j = i; j < end; j++)
                 val = val * 2 + Integer.parseInt(bits[j]);
-            for (int j = end; j < i + 5; j++) val *= 2;
+            for (int j = end; j < i + 5; j++) val *= 2;   // zero-pad a destra
             sb.append(CHARS.charAt(val & 31));
         }
         return sb.toString();
