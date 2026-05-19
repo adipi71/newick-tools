@@ -417,8 +417,8 @@ public class JstreeLabeler {
         Map<String, String> row = new LinkedHashMap<>();
         row.put("hier_label",   n.hierLabel   == null ? "" : n.hierLabel);
         row.put("hier_label2",  n.hierLabel2  == null ? "" : n.hierLabel2);
-        row.put("hier_label16", n.hierLabel16 == null ? "" : n.hierLabel16);
-        row.put("hier_label32", n.hierLabel32 == null ? "" : n.hierLabel32);
+        row.put("hier_label16", n.hierLabel16 == null ? "" : "b16:" + n.hierLabel16);
+        row.put("hier_label32", n.hierLabel32 == null ? "" : "b32:" + n.hierLabel32);
         row.putAll(n.data);
         return row;
     }
@@ -500,8 +500,8 @@ public class JstreeLabeler {
         // hier_label* dai campi dedicati del nodo
         if (n.hierLabel   != null) parts.add("hier_label=\""   + esc(n.hierLabel)   + "\"");
         if (n.hierLabel2  != null) parts.add("hier_label2=\""  + esc(n.hierLabel2)  + "\"");
-        if (n.hierLabel16 != null) parts.add("hier_label16=\"" + esc(n.hierLabel16) + "\"");
-        if (n.hierLabel32 != null) parts.add("hier_label32=\"" + esc(n.hierLabel32) + "\"");
+        if (n.hierLabel16 != null) parts.add("hier_label16=\"" + esc("b16:" + n.hierLabel16) + "\"");
+        if (n.hierLabel32 != null) parts.add("hier_label32=\"" + esc("b32:" + n.hierLabel32) + "\"");
 
         // tutti gli altri campi data (escluso branch_length e hier_label* già scritti)
         for (Map.Entry<String, String> e : n.data.entrySet()) {
@@ -543,14 +543,14 @@ public class JstreeLabeler {
             Map<String, String> dataOut = new LinkedHashMap<>();
             dataOut.put("hier_label",   n.hierLabel   == null ? "" : n.hierLabel);
             dataOut.put("hier_label2",  n.hierLabel2  == null ? "" : n.hierLabel2);
-            dataOut.put("hier_label16", n.hierLabel16 == null ? "" : n.hierLabel16);
-            dataOut.put("hier_label32", n.hierLabel32 == null ? "" : n.hierLabel32);
+            dataOut.put("hier_label16", n.hierLabel16 == null ? "" : "b16:" + n.hierLabel16);
+            dataOut.put("hier_label32", n.hierLabel32 == null ? "" : "b32:" + n.hierLabel32);
             dataOut.putAll(n.data);
             // restore freshly computed labels (putAll may have overwritten them)
             dataOut.put("hier_label",   n.hierLabel   == null ? "" : n.hierLabel);
             dataOut.put("hier_label2",  n.hierLabel2  == null ? "" : n.hierLabel2);
-            dataOut.put("hier_label16", n.hierLabel16 == null ? "" : n.hierLabel16);
-            dataOut.put("hier_label32", n.hierLabel32 == null ? "" : n.hierLabel32);
+            dataOut.put("hier_label16", n.hierLabel16 == null ? "" : "b16:" + n.hierLabel16);
+            dataOut.put("hier_label32", n.hierLabel32 == null ? "" : "b32:" + n.hierLabel32);
 
             sb.append(",\n    \"data\": {\n");
             int j = 0;
