@@ -120,6 +120,52 @@ java -cp bin Main json2nexus output/WND_L2_labeled.json output/WND_L2_reconstruc
 
 ---
 
+#### JSON → TSV
+
+```bash
+java -cp bin Main json2tsv output/WND_L2_labeled.json output/WND_L2_labeled.tsv
+```
+
+Exports every node as a row with fixed columns `id`, `parent`, `text` followed by all fields in the `data` block.
+
+```
+id    parent  text      color    hier_label  ...
+n0    #       n0                 0
+n1    n0      SampleA   #ff0000  1
+```
+
+The output is directly usable as input to `tsv2json`.
+
+---
+
+#### TSV → JSON jstree
+
+```bash
+java -cp bin Main tsv2json output/WND_L2_labeled.tsv output/WND_L2_from_tsv.json
+```
+
+Reconstructs a jstree JSON from a TSV produced by `json2tsv`. Columns `id`, `parent`, `text` become top-level node fields; all other columns go into the `data` block. If `text` is missing it falls back to `id`.
+
+---
+
+#### JSON + TSV → JSON enriched with attributes
+
+```bash
+java -cp bin Main enrich output/WND_L2_labeled.json attrs.tsv output/WND_L2_enriched.json
+```
+
+Merges attributes from a TSV into the `data` block of matching nodes (matched by `id`). Adds new attributes, overwrites existing ones.
+
+The TSV must have a header row with an `id` column and one or more attribute columns:
+
+```
+id	attributo1	attributo2
+n3	valore_a	valore_b
+n7	valore_c	
+```
+
+---
+
 #### Full pipeline on a single file
 
 ```bash

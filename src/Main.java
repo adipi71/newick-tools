@@ -13,6 +13,9 @@ import java.util.*;
  * ║  label       →  JstreeLabeler          (JSON  → JSON+labels) ║
  * ║  json2nexus  →  JstreeToNexus          (JSON  → NEXUS)       ║
  * ║  colorize    →  JstreeColorizer        (CSV+JSON → JSON)     ║
+ * ║  enrich      →  JstreeEnricher         (JSON+TSV → JSON)     ║
+ * ║  json2tsv    →  JstreeToTsv.toTsv      (JSON     → TSV)      ║
+ * ║  tsv2json    →  JstreeToTsv.toJson    (TSV      → JSON)     ║
  * ║  propagate   →  JstreeAttributePropagator (bottom-up)        ║
  * ║  pipeline    →  nexus2json + label + json2nexus              ║
  * ║                                                              ║
@@ -34,6 +37,15 @@ import java.util.*;
  * ║                                                              ║
  * ║  colorize <input.json> <colors.csv> <output.json>            ║
  * ║    Assegna colori ai nodi del JSON da un CSV codice,colore   ║
+ * ║                                                              ║
+ * ║  enrich <input.json> <attrs.tsv> <output.json>               ║
+ * ║    Aggiunge/sovrascrive attributi nei nodi dal TSV per id    ║
+ * ║                                                              ║
+ * ║  json2tsv <input.json> <output.tsv>                          ║
+ * ║    Esporta id, parent, text + campi data di ogni nodo        ║
+ * ║                                                              ║
+ * ║  tsv2json <input.tsv> <output.json>                          ║
+ * ║    Ricostruisce jstree da TSV (id/parent/text + data)        ║
  * ║                                                              ║
  * ║  pipeline <input.nexus> [output-dir]                         ║
  * ║    nexus → json → json-labeled → nexus ricostruito           ║
@@ -119,6 +131,40 @@ public class Main {
                 ensureParentDir(out);
                 printStep("JSON + CSV → JSON colorato", in + " + " + csv, out);
                 new JstreeColorizer().process(in, csv, out);
+                break;
+            }
+
+            // ── enrich ────────────────────────────────────────────────────
+            case "enrich": {
+                requireArgs(args, 3, "enrich <input.json> <attrs.tsv> <output.json>");
+                String in  = resolveInput(args[1]);
+                String tsv = resolveInput(args[2]);
+                String out = args[3];
+                ensureParentDir(out);
+                printStep("JSON + TSV → JSON arricchito", in + " + " + tsv, out);
+                new JstreeEnricher().process(in, tsv, out);
+                break;
+            }
+
+            // ── json2tsv ──────────────────────────────────────────────────
+            case "json2tsv": {
+                requireArgs(args, 2, "json2tsv <input.json> <output.tsv>");
+                String in  = resolveInput(args[1]);
+                String out = args[2];
+                ensureParentDir(out);
+                printStep("JSON → TSV", in, out);
+                new JstreeToTsv().toTsv(in, out);
+                break;
+            }
+
+            // ── tsv2json ──────────────────────────────────────────────────
+            case "tsv2json": {
+                requireArgs(args, 2, "tsv2json <input.tsv> <output.json>");
+                String in  = resolveInput(args[1]);
+                String out = args[2];
+                ensureParentDir(out);
+                printStep("TSV → JSON", in, out);
+                new JstreeToTsv().toJson(in, out);
                 break;
             }
 
