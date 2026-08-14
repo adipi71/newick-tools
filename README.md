@@ -110,6 +110,29 @@ Adds `hier_label` to each node:
 | child of 1  | `1.1`      |
 | child of 2  | `2.1`      |
 
+Alongside `hier_label`, the labeler also computes three encodings of it — `hier_label2`, `hier_label16` (prefixed `b16:`), `hier_label32` (prefixed `b32:`) — kept in the node data and exported to TSV/NEXUS.
+
+**`hier_label2`** — each dot-separated segment `s` of `hier_label` is converted independently:
+- `s == 1` → `0`
+- `s == 2` → `1`
+- `s > 2` → `s - 1` written as 4-bit binary, digits separated by `.` (e.g. `3` → `2` → `0.0.1.0`, `5` → `4` → `0.1.0.0`)
+
+**`hier_label16`** — `hier_label2` is split into blocks of 4 binary digits (left to right); each full block becomes one hex digit (`0`–`F`). If the last block has fewer than 4 digits, it is **not** zero-padded: it's appended as `.` + a prefix (indicating how many binary digits it holds) + the decimal/hex value of those digits:
+
+| digits in last block | prefix | range        |
+|-----------------------|--------|---------------|
+| 1                      | `b` (binary)     | `b0`–`b1` |
+| 2                      | `q` (quaternary) | `q0`–`q3` |
+| 3                      | `o` (octal)      | `o0`–`o7` |
+
+**`hier_label32`** — same scheme, blocks of 5 binary digits, full blocks → base32 digit (`0`–`9`, `A`–`V`). Same incomplete-last-block rule as `hier_label16`, plus:
+
+| digits in last block | prefix | range |
+|-----------------------|--------|-------|
+| 4                      | `h` (hex) | `h0`–`hf` |
+
+Example: `hier_label2 = 000000000000000100` →  `hier_label16 = b16:0001.q0`,  `hier_label32 = b32:000.o4`.
+
 ---
 
 #### JSON → reconstructed NEXUS

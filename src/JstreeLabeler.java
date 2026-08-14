@@ -27,6 +27,10 @@ import java.util.*;
  */
 public class JstreeLabeler {
 
+    // Nome dell'attributo colore effettivamente presente nel file di input
+    // ("color" oppure, in alternativa, "user_colour").
+    private String colorAttr;
+
     // ── Rappresentazione interna del nodo ────────────────────────────────────
     static class Node {
         String id;
@@ -47,6 +51,8 @@ public class JstreeLabeler {
 
         String raw = new String(Files.readAllBytes(Paths.get(inputPath)), "UTF-8");
         List<Node> nodes = parseJson(raw);
+
+        colorAttr = detectColorAttribute(nodes);
 
         // Lookup id → Node e costruzione lista figli
         Map<String, Node> byId = new LinkedHashMap<>(nodes.size() * 2);
@@ -107,6 +113,29 @@ public class JstreeLabeler {
     }
 
     // ════════════════════════════════════════════════════════════════════════
+    //  Determina quale attributo colore è presente nel file di input:
+    //  prima "color", in alternativa "user_colour". Se nessuno dei due è
+    //  presente, termina con errore.
+    // ════════════════════════════════════════════════════════════════════════
+    private String detectColorAttribute(List<Node> nodes) {
+        for (Node n : nodes)
+            if (n.data.containsKey("color")) {
+                System.out.println("    Attributo colore usato : color");
+                return "color";
+            }
+
+        for (Node n : nodes)
+            if (n.data.containsKey("user_colour")) {
+                System.out.println("    Attributo colore usato : user_colour");
+                return "user_colour";
+            }
+
+        throw new RuntimeException(
+                "Nessun attributo colore trovato nel file di input: " +
+                "atteso \"color\" oppure, in alternativa, \"user_colour\".");
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
     //  Per ogni colore distinto, assegna root_color=colore al nodo con
     //  hier_label di lunghezza minima (a parità, lessicograficamente minore).
     // ════════════════════════════════════════════════════════════════════════
@@ -116,7 +145,7 @@ public class JstreeLabeler {
 
         Map<String, Node> best = new LinkedHashMap<>();
         for (Node n : nodes) {
-            String color = n.data.get("color");
+            String color = n.data.get(colorAttr);
             if (color == null || color.isEmpty()) continue;
             if (n.hierLabel == null || n.hierLabel.isEmpty()) continue;
 
@@ -166,9 +195,18 @@ public class JstreeLabeler {
     //               es. 3→(2)→"0.0.1.0",  5→(4)→"0.1.0.0"
     //
     //  hier_label16: hier_label2 diviso in blocchi da 4 cifre (sinistra→destra),
-    //                ultimo blocco zero-padded a destra → cifra 0-9A-F per blocco
+    //                ogni blocco completo → cifra 0-9A-F; se l'ultimo blocco ha
+    //                meno di 4 cifre, viene preceduto da "." e reso col valore
+    //                decimale delle cifre binarie effettive (senza padding),
+    //                con un prefisso che indica quante cifre binarie compone
+    //                il blocco: 1 cifra → "b0".."b1" (binario)
+    //                           2 cifre → "q0".."q3" (quaternario)
+    //                           3 cifre → "o0".."o7" (ottale)
     //  hier_label32: hier_label2 diviso in blocchi da 5 cifre,
-    //                stesso schema → cifra 0-9A-V per blocco
+    //                stesso schema (cifra 0-9A-V) per i blocchi completi;
+    //                per il blocco finale incompleto si applica la stessa
+    //                regola di hier_label16, con in aggiunta:
+    //                           4 cifre → "h0".."hf" (esadecimale)
     // ════════════════════════════════════════════════════════════════════════
     static String toHierLabel2(String hierLabel) {
         if (hierLabel == null || hierLabel.isEmpty() || "0".equals(hierLabel)) return "0";
@@ -192,38 +230,66 @@ public class JstreeLabeler {
     }
 
     // Riceve hier_label2 direttamente (cifre 0/1 separate da punto).
-    // Divide in blocchi da 4 cifre (zero-pad a destra sull'ultimo blocco)
-    // e converte ogni blocco in una cifra esadecimale.
+    // Divide in blocchi da 4 cifre e converte ogni blocco completo in una
+    // cifra esadecimale (0-9A-F).
+    // Se l'ultimo blocco ha meno di 4 cifre binarie, viene preceduto da "."
+    // e reso come prefisso + valore decimale delle cifre binarie effettive
+    // (nessun padding): 1 cifra → b0/b1, 2 cifre → q0..q3, 3 cifre → o0..o7.
     static String toHierLabel16(String label2) {
         if (label2 == null || label2.isEmpty() || "0".equals(label2)) return "0";
         String[] bits = label2.split("\\.");
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < bits.length; i += 4) {
-            int val = 0;
             int end = Math.min(i + 4, bits.length);
+            int len = end - i;
+            int val = 0;
             for (int j = i; j < end; j++)
                 val = val * 2 + Integer.parseInt(bits[j]);
-            for (int j = end; j < i + 4; j++) val *= 2;   // zero-pad a destra
-            sb.append(Integer.toHexString(val).toUpperCase());
+            if (len == 4) {
+                sb.append(Integer.toHexString(val).toUpperCase());
+            } else {
+                String prefix = switch (len) {
+                    case 1 -> "b";
+                    case 2 -> "q";
+                    case 3 -> "o";
+                    default -> throw new IllegalStateException("blocco finale inatteso: " + len + " bit");
+                };
+                sb.append(".").append(prefix).append(Integer.toHexString(val));
+            }
         }
         return sb.toString();
     }
 
     // Riceve hier_label2 direttamente (cifre 0/1 separate da punto).
-    // Divide in blocchi da 5 cifre (zero-pad a destra sull'ultimo blocco)
-    // e converte ogni blocco in una cifra base32 (0-9A-V).
+    // Divide in blocchi da 5 cifre e converte ogni blocco completo in una
+    // cifra base32 (0-9A-V).
+    // Se l'ultimo blocco ha meno di 5 cifre binarie, viene preceduto da "."
+    // e reso come prefisso + valore delle cifre binarie effettive (nessun
+    // padding): 1 cifra → b0/b1, 2 cifre → q0..q3, 3 cifre → o0..o7,
+    // 4 cifre → h0..hf (esadecimale).
     static String toHierLabel32(String label2) {
         if (label2 == null || label2.isEmpty() || "0".equals(label2)) return "0";
         final String CHARS = "0123456789ABCDEFGHIJKLMNOPQRSTUV";
         String[] bits = label2.split("\\.");
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < bits.length; i += 5) {
-            int val = 0;
             int end = Math.min(i + 5, bits.length);
+            int len = end - i;
+            int val = 0;
             for (int j = i; j < end; j++)
                 val = val * 2 + Integer.parseInt(bits[j]);
-            for (int j = end; j < i + 5; j++) val *= 2;   // zero-pad a destra
-            sb.append(CHARS.charAt(val & 31));
+            if (len == 5) {
+                sb.append(CHARS.charAt(val));
+            } else {
+                String prefix = switch (len) {
+                    case 1 -> "b";
+                    case 2 -> "q";
+                    case 3 -> "o";
+                    case 4 -> "h";
+                    default -> throw new IllegalStateException("blocco finale inatteso: " + len + " bit");
+                };
+                sb.append(".").append(prefix).append(Integer.toHexString(val));
+            }
         }
         return sb.toString();
     }
@@ -503,10 +569,11 @@ public class JstreeLabeler {
         if (n.hierLabel16 != null) parts.add("hier_label16=\"" + esc("b16:" + n.hierLabel16) + "\"");
         if (n.hierLabel32 != null) parts.add("hier_label32=\"" + esc("b32:" + n.hierLabel32) + "\"");
 
-        // tutti gli altri campi data (escluso branch_length e hier_label* già scritti)
+        // tutti gli altri campi data (escluso branch_length, hier_label* già scritti
+        // e "user_colour", riscritto sotto per evitare la chiave duplicata)
         for (Map.Entry<String, String> e : n.data.entrySet()) {
             String k = e.getKey();
-            if (k.equals("branch_length") ||
+            if (k.equals("branch_length") || k.equals("user_colour") ||
                 k.equals("hier_label") || k.equals("hier_label2") ||
                 k.equals("hier_label16") || k.equals("hier_label32"))
                 continue;
@@ -514,7 +581,7 @@ public class JstreeLabeler {
         }
 
         // user_colour = color (campo richiesto da peartree)
-        String color = n.data.get("color");
+        String color = n.data.get(colorAttr);
         if (color != null && !color.isEmpty())
             parts.add("user_colour=\"" + esc(color) + "\"");
 
