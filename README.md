@@ -37,6 +37,7 @@ Compiles, labels and converts in one shot. Produces in `output/`:
 - `WND_L2_labeled.json` — JSON with `hier_label`, `hier_label16`, `hier_label32`, `root_color`
 - `WND_L2_labeled.tsv` — complete table of all nodes
 - `WND_L2_labeled_root_colors.tsv` — root nodes only, by color
+- `WND_L2_labeled_all_roots.tsv` — root nodes by color plus their ancestor chain (`root_ancestor`)
 - `WND_L2_labeled.nexus` — annotated NEXUS (FigTree)
 - `WND_L2_labeled.nwk` — plain Newick with quotes
 - `WND_L2_labeled_noquote.nwk` — plain Newick without quotes
@@ -132,6 +133,24 @@ Alongside `hier_label`, the labeler also computes three encodings of it — `hie
 | 4                      | `h` (hex) | `h0`–`hf` |
 
 Example: `hier_label2 = 000000000000000100` →  `hier_label16 = b16:0001.q0`,  `hier_label32 = b32:000.o4`.
+
+The labeling step also checks whether the tree is strictly binary. It prints a summary to the console — either confirming the tree is binary, or listing every node with more than 2 children (`hier_label`, sample text, child count):
+
+```
+    Struttura albero     : NON binario — 2 nodi con più di 2 diramazioni
+        1.1.1        (n12)   -> 3 figli
+        1.1.1.1.1    (n2045) -> 15 figli
+```
+
+Every node with more than 2 children also gets a `polytomy` attribute in its `data` block, whose value is the number of children. Being a regular `data` field, it flows through automatically to the labeled JSON, TSV and peartree NEXUS outputs — no separate handling needed.
+
+**`root_color`** — for each distinct color value found in the input (`color` or `user_colour`, see [Annotation mapping](#annotation-mapping)), the labeler picks the node closest to the tree root carrying that color (shortest `hier_label`; ties broken lexicographically) and sets `root_color=<color>` on it.
+
+**`root_ancestor`** — for every `root_color` node, the labeler then walks up its chain of predecessors (parent, grandparent, ...) and sets `root_ancestor="true"` on each one, stopping as soon as it reaches a node that is already marked — either an existing `root_color` node or one already flagged `root_ancestor` — or after marking the true tree root. This means a predecessor shared by multiple colored roots is only walked/marked once.
+
+Both are regular `data` fields and flow through to JSON/TSV/NEXUS like any other attribute. Two dedicated TSV exports are also produced:
+- `_root_colors.tsv` — only the `root_color` nodes (one per distinct color)
+- `_all_roots.tsv` — the `root_color` nodes **plus** their `root_ancestor` predecessors
 
 ---
 

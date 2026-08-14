@@ -1,6 +1,7 @@
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
+import java.util.function.Predicate;
 
 /**
  * JstreeLabeler.java
@@ -103,12 +104,15 @@ public class JstreeLabeler {
         }
 
         assignRootColors(nodes);
+        markRootAncestors(nodes, byId);
+        checkBranching(nodes);
         printStats(nodes);
         writeJson(nodes, outputPath);
 
         String base = outputPath.replaceAll("\\.[^.]+$", "");
         writeTsv(nodes, base + ".tsv");
         writeRootColorTsv(nodes, base + "_root_colors.tsv");
+        writeAllRootsTsv(nodes, base + "_all_roots.tsv");
         writePeartreeNexus(nodes, root, byId, base + "_peartree.nexus");
     }
 
@@ -164,6 +168,69 @@ public class JstreeLabeler {
             e.getValue().data.put("root_color", e.getKey());
 
         System.out.printf("    root_color assegnati : %d colori distinti%n", best.size());
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
+    //  Per ogni nodo con root_color, risale la catena dei predecessori
+    //  (genitore, nonno, ...) marcandoli con root_ancestor="true", finché
+    //  non incontra un nodo già marcato (root_color oppure root_ancestor
+    //  già impostato), oppure la vera radice dell'albero.
+    // ════════════════════════════════════════════════════════════════════════
+    private void markRootAncestors(List<Node> nodes, Map<String, Node> byId) {
+        // Rimuove root_ancestor preesistenti
+        for (Node n : nodes) n.data.remove("root_ancestor");
+
+        int marked = 0;
+        for (Node n : nodes) {
+            String color = n.data.get("root_color");
+            if (color == null || color.isEmpty()) continue;
+
+            Node cur = byId.get(n.parent);
+            while (cur != null) {
+                boolean alreadyRootColor = cur.data.get("root_color") != null
+                        && !cur.data.get("root_color").isEmpty();
+                boolean alreadyAncestor  = "true".equals(cur.data.get("root_ancestor"));
+                if (alreadyRootColor || alreadyAncestor) break;
+
+                cur.data.put("root_ancestor", "true");
+                marked++;
+
+                if ("#".equals(cur.parent)) break;   // raggiunta la vera radice
+                cur = byId.get(cur.parent);
+            }
+        }
+
+        System.out.printf("    root_ancestor marcati : %d nodi%n", marked);
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
+    //  Verifica se l'albero è totalmente binario (ogni nodo ha al massimo 2
+    //  figli) oppure presenta diramazioni con più di 2 figli (politomie).
+    //  Ai nodi con più di 2 figli viene aggiunto l'attributo "polytomy",
+    //  valorizzato con il numero di figli.
+    // ════════════════════════════════════════════════════════════════════════
+    private void checkBranching(List<Node> nodes) {
+        List<Node> polytomies = new ArrayList<>();
+        for (Node n : nodes) {
+            n.data.remove("polytomy");
+            if (n.childIds.size() > 2) {
+                n.data.put("polytomy", String.valueOf(n.childIds.size()));
+                polytomies.add(n);
+            }
+        }
+
+        if (polytomies.isEmpty()) {
+            System.out.println("    Struttura albero     : binario (nessun nodo con più di 2 figli)");
+        } else {
+            System.out.printf("    Struttura albero     : NON binario — %d nodi con più di 2 diramazioni%n",
+                    polytomies.size());
+            for (Node n : polytomies) {
+                System.out.printf("        %-12s (%s) -> %d figli%n",
+                        n.hierLabel == null ? n.id : n.hierLabel,
+                        n.text == null ? "" : n.text,
+                        n.childIds.size());
+            }
+        }
     }
 
     // ════════════════════════════════════════════════════════════════════════
@@ -448,6 +515,26 @@ public class JstreeLabeler {
     //  TSV dei soli nodi con root_color: stesse colonne del TSV completo
     // ════════════════════════════════════════════════════════════════════════
     private void writeRootColorTsv(List<Node> nodes, String path) throws Exception {
+        writeFilteredTsv(nodes, path, "root_color",
+                n -> n.data.get("root_color") != null && !n.data.get("root_color").isEmpty());
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
+    //  TSV dei nodi radice (root_color) e dei loro predecessori
+    //  (root_ancestor="true"): stesse colonne del TSV completo
+    // ════════════════════════════════════════════════════════════════════════
+    private void writeAllRootsTsv(List<Node> nodes, String path) throws Exception {
+        writeFilteredTsv(nodes, path, "all_roots",
+                n -> (n.data.get("root_color") != null && !n.data.get("root_color").isEmpty())
+                     || "true".equals(n.data.get("root_ancestor")));
+    }
+
+    // ════════════════════════════════════════════════════════════════════════
+    //  Scrive un TSV con le stesse colonne del TSV completo, includendo solo
+    //  i nodi che soddisfano il filtro dato.
+    // ════════════════════════════════════════════════════════════════════════
+    private void writeFilteredTsv(List<Node> nodes, String path, String label,
+                                   Predicate<Node> filter) throws Exception {
         LinkedHashSet<String> allKeys = new LinkedHashSet<>();
         allKeys.add("hier_label");
         allKeys.add("hier_label2");
@@ -462,7 +549,7 @@ public class JstreeLabeler {
 
         int count = 0;
         for (Node n : nodes) {
-            if (n.data.get("root_color") == null) continue;
+            if (!filter.test(n)) continue;
             Map<String, String> row = buildDataRow(n);
             sb.append(n.text == null ? "" : n.text);
             for (String k : allKeys) {
@@ -475,7 +562,7 @@ public class JstreeLabeler {
         }
 
         Files.write(Paths.get(path), sb.toString().getBytes("UTF-8"));
-        System.out.printf("    TSV root_color       : %d nodi → %s%n", count, path);
+        System.out.printf("    TSV %-11s : %d nodi → %s%n", label, count, path);
     }
 
     /** Costruisce la mappa chiave→valore effettiva di un nodo (come in writeJson). */

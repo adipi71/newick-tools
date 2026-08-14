@@ -9,7 +9,8 @@
       "hier_label": "0",
       "hier_label2": "0",
       "hier_label16": "b16:0",
-      "hier_label32": "b32:0"
+      "hier_label32": "b32:0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -23,7 +24,8 @@
       "hier_label2": "0",
       "hier_label16": "b16:0",
       "hier_label32": "b32:0",
-      "branch_length": "0"
+      "branch_length": "0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -38,7 +40,8 @@
       "hier_label16": "b16:.q0",
       "hier_label32": "b32:.q0",
       "_pt_highlight": "#dc322f",
-      "branch_length": "632"
+      "branch_length": "632",
+      "root_ancestor": "true"
     }
   },
   {
@@ -52,7 +55,8 @@
       "hier_label2": "0.0.0",
       "hier_label16": "b16:.o0",
       "hier_label32": "b32:.o0",
-      "branch_length": "9"
+      "branch_length": "9",
+      "root_ancestor": "true"
     }
   },
   {
@@ -66,7 +70,8 @@
       "hier_label2": "0.0.0.0",
       "hier_label16": "b16:0",
       "hier_label32": "b32:.h0",
-      "branch_length": "19"
+      "branch_length": "19",
+      "root_ancestor": "true"
     }
   },
   {
@@ -198,7 +203,8 @@
       "hier_label2": "0.0.0.1.1.1",
       "hier_label16": "b16:1.q3",
       "hier_label32": "b32:3.b1",
-      "branch_length": "24"
+      "branch_length": "24",
+      "polytomy": "3"
     }
   },
   {
@@ -300,7 +306,8 @@
       "hier_label2": "0.0.1.0.1",
       "hier_label16": "b16:2.b1",
       "hier_label32": "b32:5",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "4"
     }
   },
   {
@@ -403,7 +410,8 @@
       "hier_label2": "0.0.1.1",
       "hier_label16": "b16:3",
       "hier_label32": "b32:.h3",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "3"
     }
   },
   {
@@ -635,7 +643,8 @@
       "hier_label2": "0.0.1.1.0.0.1.0.1.1.0.1.1",
       "hier_label16": "b16:32D.b1",
       "hier_label32": "b32:6B.o3",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "4"
     }
   },
   {
@@ -752,7 +761,8 @@
       "hier_label2": "0.0.1.1.0.0.1.0.1.1.0.1.1.0.0.1.1",
       "hier_label16": "b16:32D9.b1",
       "hier_label32": "b32:6BC.q3",
-      "branch_length": "2"
+      "branch_length": "2",
+      "polytomy": "3"
     }
   },
   {
@@ -1188,7 +1198,8 @@
       "hier_label2": "0.0.1.1.0.0.1.0.1.1.1.1.1.1.1.1.1.1.1.1.1.1",
       "hier_label16": "b16:32FFF.q3",
       "hier_label32": "b32:6BVV.q3",
-      "branch_length": "3"
+      "branch_length": "3",
+      "polytomy": "4"
     }
   },
   {
@@ -1291,7 +1302,8 @@
       "hier_label2": "0.1",
       "hier_label16": "b16:.q1",
       "hier_label32": "b32:.q1",
-      "branch_length": "522"
+      "branch_length": "522",
+      "root_ancestor": "true"
     }
   },
   {
@@ -1306,7 +1318,8 @@
       "hier_label16": "b16:.o2",
       "hier_label32": "b32:.o2",
       "_pt_highlight": "#268bd2",
-      "branch_length": "87"
+      "branch_length": "87",
+      "root_ancestor": "true"
     }
   },
   {
@@ -1320,7 +1333,9 @@
       "hier_label2": "0.1.0.0",
       "hier_label16": "b16:4",
       "hier_label32": "b32:.h4",
-      "branch_length": "128"
+      "branch_length": "128",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -1482,7 +1497,8 @@
       "hier_label2": "0.1.1",
       "hier_label16": "b16:.o3",
       "hier_label32": "b32:.o3",
-      "branch_length": "110"
+      "branch_length": "110",
+      "root_ancestor": "true"
     }
   },
   {
@@ -1539,7 +1555,8 @@
       "hier_label2": "0.1.1.1",
       "hier_label16": "b16:7",
       "hier_label32": "b32:.h7",
-      "branch_length": "31"
+      "branch_length": "31",
+      "root_ancestor": "true"
     }
   },
   {
@@ -1554,7 +1571,8 @@
       "hier_label16": "b16:7.b0",
       "hier_label32": "b32:E",
       "_pt_highlight": "#cb4b16",
-      "branch_length": "70"
+      "branch_length": "70",
+      "root_ancestor": "true"
     }
   },
   {
@@ -1568,7 +1586,8 @@
       "hier_label2": "0.1.1.1.0.0",
       "hier_label16": "b16:7.q0",
       "hier_label32": "b32:E.b0",
-      "branch_length": "111"
+      "branch_length": "111",
+      "root_ancestor": "true"
     }
   },
   {
@@ -1744,7 +1763,8 @@
       "hier_label2": "0.1.1.1.1",
       "hier_label16": "b16:7.b1",
       "hier_label32": "b32:F",
-      "branch_length": "1"
+      "branch_length": "1",
+      "root_ancestor": "true"
     }
   },
   {
@@ -1803,7 +1823,8 @@
       "hier_label2": "0.1.1.1.1.1",
       "hier_label16": "b16:7.q3",
       "hier_label32": "b32:F.b1",
-      "branch_length": "28"
+      "branch_length": "28",
+      "root_ancestor": "true"
     }
   },
   {
@@ -1818,7 +1839,8 @@
       "hier_label16": "b16:7.o6",
       "hier_label32": "b32:F.q2",
       "_pt_highlight": "#d33682",
-      "branch_length": "137"
+      "branch_length": "137",
+      "root_ancestor": "true"
     }
   },
   {
@@ -1892,7 +1914,8 @@
       "hier_label2": "0.1.1.1.1.1.1",
       "hier_label16": "b16:7.o7",
       "hier_label32": "b32:F.q3",
-      "branch_length": "61"
+      "branch_length": "61",
+      "root_ancestor": "true"
     }
   },
   {
@@ -1920,7 +1943,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1",
       "hier_label16": "b16:7F",
       "hier_label32": "b32:F.o7",
-      "branch_length": "40"
+      "branch_length": "40",
+      "root_ancestor": "true"
     }
   },
   {
@@ -1948,7 +1972,9 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1",
       "hier_label16": "b16:7F.b1",
       "hier_label32": "b32:F.hf",
-      "branch_length": "2"
+      "branch_length": "2",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -1963,7 +1989,8 @@
       "hier_label16": "b16:7F.q2",
       "hier_label32": "b32:FU",
       "_pt_highlight": "#6c71c4",
-      "branch_length": "11"
+      "branch_length": "11",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2008,7 +2035,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.1",
       "hier_label16": "b16:7F.q3",
       "hier_label32": "b32:FV",
-      "branch_length": "17"
+      "branch_length": "17",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2037,7 +2065,8 @@
       "hier_label16": "b16:7F.o7",
       "hier_label32": "b32:FV.b1",
       "_pt_highlight": "#b58900",
-      "branch_length": "15"
+      "branch_length": "15",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2051,7 +2080,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.1.1.0",
       "hier_label16": "b16:7FE",
       "hier_label32": "b32:FV.q2",
-      "branch_length": "47"
+      "branch_length": "47",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2227,7 +2257,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0",
       "hier_label16": "b16:7F9.b0",
       "hier_label32": "b32:FU.o2",
-      "branch_length": "19"
+      "branch_length": "19",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2255,7 +2286,9 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1",
       "hier_label16": "b16:7F9.q1",
       "hier_label32": "b32:FU.h5",
-      "branch_length": "1"
+      "branch_length": "1",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -2297,7 +2330,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0",
       "hier_label16": "b16:7F94.q2",
       "hier_label32": "b32:FUA.o2",
-      "branch_length": "7"
+      "branch_length": "7",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2312,7 +2346,8 @@
       "hier_label16": "b16:7F94.o4",
       "hier_label32": "b32:FUA.h4",
       "_pt_highlight": "#859900",
-      "branch_length": "5"
+      "branch_length": "5",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2326,7 +2361,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.0.0",
       "hier_label16": "b16:7F948",
       "hier_label32": "b32:FUA8",
-      "branch_length": "105"
+      "branch_length": "105",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2429,7 +2465,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.0.1.1",
       "hier_label16": "b16:7F949.b1",
       "hier_label32": "b32:FUA9.b1",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "3"
     }
   },
   {
@@ -2546,7 +2583,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1",
       "hier_label16": "b16:7F94.o5",
       "hier_label32": "b32:FUA.h5",
-      "branch_length": "3"
+      "branch_length": "3",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2634,7 +2672,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1",
       "hier_label16": "b16:7F94B",
       "hier_label32": "b32:FUAB",
-      "branch_length": "29"
+      "branch_length": "29",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2662,7 +2701,9 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1",
       "hier_label16": "b16:7F94B.b1",
       "hier_label32": "b32:FUAB.b1",
-      "branch_length": "2"
+      "branch_length": "2",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -2677,7 +2718,8 @@
       "hier_label16": "b16:7F94B.q2",
       "hier_label32": "b32:FUAB.q2",
       "_pt_highlight": "#3cb44b",
-      "branch_length": "67"
+      "branch_length": "67",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2723,7 +2765,8 @@
       "hier_label16": "b16:7F94B.q3",
       "hier_label32": "b32:FUAB.q3",
       "_pt_highlight": "#4363d8",
-      "branch_length": "28"
+      "branch_length": "28",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2884,7 +2927,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0",
       "hier_label16": "b16:7F94B9.b0",
       "hier_label32": "b32:FUABI",
-      "branch_length": "5"
+      "branch_length": "5",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2898,7 +2942,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0",
       "hier_label16": "b16:7F94B9.q0",
       "hier_label32": "b32:FUABI.b0",
-      "branch_length": "2"
+      "branch_length": "2",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2926,7 +2971,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1",
       "hier_label16": "b16:7F94B9.o1",
       "hier_label32": "b32:FUABI.q1",
-      "branch_length": "2"
+      "branch_length": "2",
+      "root_ancestor": "true"
     }
   },
   {
@@ -2941,7 +2987,8 @@
       "hier_label16": "b16:7F94B92",
       "hier_label32": "b32:FUABI.o2",
       "_pt_highlight": "#f58231",
-      "branch_length": "39"
+      "branch_length": "39",
+      "root_ancestor": "true"
     }
   },
   {
@@ -3014,7 +3061,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1.0.1.1.0",
       "hier_label16": "b16:7F94B92.o6",
       "hier_label32": "b32:FUABIB.b0",
-      "branch_length": "69"
+      "branch_length": "69",
+      "polytomy": "6"
     }
   },
   {
@@ -3336,7 +3384,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1.1",
       "hier_label16": "b16:7F94B93",
       "hier_label32": "b32:FUABI.o3",
-      "branch_length": "17"
+      "branch_length": "17",
+      "root_ancestor": "true"
     }
   },
   {
@@ -3364,7 +3413,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1.1.1",
       "hier_label16": "b16:7F94B93.b1",
       "hier_label32": "b32:FUABI.h7",
-      "branch_length": "5"
+      "branch_length": "5",
+      "root_ancestor": "true"
     }
   },
   {
@@ -3379,7 +3429,9 @@
       "hier_label16": "b16:7F94B93.q2",
       "hier_label32": "b32:FUABIE",
       "_pt_highlight": "#911eb4",
-      "branch_length": "38"
+      "branch_length": "38",
+      "root_ancestor": "true",
+      "polytomy": "4"
     }
   },
   {
@@ -3468,7 +3520,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1.1.1.0.0.0.1.1",
       "hier_label16": "b16:7F94B938.q3",
       "hier_label32": "b32:FUABIE.h3",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "5"
     }
   },
   {
@@ -3687,7 +3740,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1.1.1.0.0.0.1.1.0.1.0.0",
       "hier_label16": "b16:7F94B938D.q0",
       "hier_label32": "b32:FUABIE6.o4",
-      "branch_length": "6"
+      "branch_length": "6",
+      "polytomy": "3"
     }
   },
   {
@@ -3746,7 +3800,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1.1.1.1",
       "hier_label16": "b16:7F94B93.q3",
       "hier_label32": "b32:FUABIF",
-      "branch_length": "28"
+      "branch_length": "28",
+      "root_ancestor": "true"
     }
   },
   {
@@ -3761,7 +3816,8 @@
       "hier_label16": "b16:7F94B93.o6",
       "hier_label32": "b32:FUABIF.b0",
       "_pt_highlight": "#42d4f4",
-      "branch_length": "43"
+      "branch_length": "43",
+      "root_ancestor": "true"
     }
   },
   {
@@ -3791,7 +3847,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1.1.1.1.0.1",
       "hier_label16": "b16:7F94B93D",
       "hier_label32": "b32:FUABIF.q1",
-      "branch_length": "2"
+      "branch_length": "2",
+      "polytomy": "3"
     }
   },
   {
@@ -3893,7 +3950,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1.1.1.1.0.1.0.0.1.0.1.1",
       "hier_label16": "b16:7F94B93D2.q3",
       "hier_label32": "b32:FUABIF9.o3",
-      "branch_length": "3"
+      "branch_length": "3",
+      "polytomy": "3"
     }
   },
   {
@@ -3953,7 +4011,8 @@
       "hier_label16": "b16:7F94B93.o7",
       "hier_label32": "b32:FUABIF.b1",
       "_pt_highlight": "#f032e6",
-      "branch_length": "38"
+      "branch_length": "38",
+      "root_ancestor": "true"
     }
   },
   {
@@ -3967,7 +4026,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1.1.1.1.1.0",
       "hier_label16": "b16:7F94B93E",
       "hier_label32": "b32:FUABIF.q2",
-      "branch_length": "5"
+      "branch_length": "5",
+      "root_ancestor": "true"
     }
   },
   {
@@ -4084,7 +4144,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1.1.1.1.1.1.0",
       "hier_label16": "b16:7F94B93F.b0",
       "hier_label32": "b32:FUABIF.o6",
-      "branch_length": "5"
+      "branch_length": "5",
+      "polytomy": "3"
     }
   },
   {
@@ -4215,7 +4276,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1.1.1.1.1.1.1.1.0.1",
       "hier_label16": "b16:7F94B93FD",
       "hier_label32": "b32:FUABIFU.b1",
-      "branch_length": "2"
+      "branch_length": "2",
+      "polytomy": "4"
     }
   },
   {
@@ -4347,7 +4409,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1.1.1.1.1.1.1.1.1.1",
       "hier_label16": "b16:7F94B93FF",
       "hier_label32": "b32:FUABIFV.b1",
-      "branch_length": "12"
+      "branch_length": "12",
+      "polytomy": "3"
     }
   },
   {
@@ -4391,7 +4454,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.1.1.1.1.1.1.1.1.1.1.0.0.1.0",
       "hier_label16": "b16:7F94B93FF2",
       "hier_label32": "b32:FUABIFVI",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "3"
     }
   },
   {
@@ -4450,7 +4514,9 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1",
       "hier_label16": "b16:7F94B9.q1",
       "hier_label32": "b32:FUABI.b1",
-      "branch_length": "29"
+      "branch_length": "29",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -4465,7 +4531,8 @@
       "hier_label16": "b16:7F94B9.o2",
       "hier_label32": "b32:FUABI.q2",
       "_pt_highlight": "#bfef45",
-      "branch_length": "65"
+      "branch_length": "65",
+      "root_ancestor": "true"
     }
   },
   {
@@ -4510,7 +4577,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.1",
       "hier_label16": "b16:7F94B9.o3",
       "hier_label32": "b32:FUABI.q3",
-      "branch_length": "4"
+      "branch_length": "4",
+      "root_ancestor": "true"
     }
   },
   {
@@ -4538,7 +4606,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.1.1",
       "hier_label16": "b16:7F94B97",
       "hier_label32": "b32:FUABI.o7",
-      "branch_length": "3"
+      "branch_length": "3",
+      "root_ancestor": "true"
     }
   },
   {
@@ -4553,7 +4622,8 @@
       "hier_label16": "b16:7F94B97.b0",
       "hier_label32": "b32:FUABI.he",
       "_pt_highlight": "#fabed4",
-      "branch_length": "10"
+      "branch_length": "10",
+      "root_ancestor": "true"
     }
   },
   {
@@ -4627,7 +4697,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.1.1.1",
       "hier_label16": "b16:7F94B97.b1",
       "hier_label32": "b32:FUABI.hf",
-      "branch_length": "24"
+      "branch_length": "24",
+      "root_ancestor": "true"
     }
   },
   {
@@ -4642,7 +4713,8 @@
       "hier_label16": "b16:7F94B97.q2",
       "hier_label32": "b32:FUABIU",
       "_pt_highlight": "#469990",
-      "branch_length": "19"
+      "branch_length": "19",
+      "root_ancestor": "true"
     }
   },
   {
@@ -4788,7 +4860,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.1.1.1.0.1.1.1.1.1",
       "hier_label16": "b16:7F94B97B.o7",
       "hier_label32": "b32:FUABIUV",
-      "branch_length": "2"
+      "branch_length": "2",
+      "polytomy": "3"
     }
   },
   {
@@ -4877,7 +4950,9 @@
       "hier_label16": "b16:7F94B97.q3",
       "hier_label32": "b32:FUABIV",
       "_pt_highlight": "#a8d8a8",
-      "branch_length": "11"
+      "branch_length": "11",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -4891,7 +4966,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.1.1.1.1.0",
       "hier_label16": "b16:7F94B97.o6",
       "hier_label32": "b32:FUABIV.b0",
-      "branch_length": "9"
+      "branch_length": "9",
+      "root_ancestor": "true"
     }
   },
   {
@@ -5125,7 +5201,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.1.1.1.1.0.0.1.0.1.1.1",
       "hier_label16": "b16:7F94B97CB.b1",
       "hier_label32": "b32:FUABIV5.q3",
-      "branch_length": "2"
+      "branch_length": "2",
+      "polytomy": "3"
     }
   },
   {
@@ -5154,7 +5231,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.1.1.1.1.0.0.1.0.1.1.1.1",
       "hier_label16": "b16:7F94B97CB.q3",
       "hier_label32": "b32:FUABIV5.o7",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "5"
     }
   },
   {
@@ -5257,7 +5335,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.1.1.1.1.0.0.1.0.1.1.1.0.0.1.0.0",
       "hier_label16": "b16:7F94B97CB9.q0",
       "hier_label32": "b32:FUABIV5P.q0",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "3"
     }
   },
   {
@@ -5330,7 +5409,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.1.1.1.1.0.0.1.0.1.1.1.0.0.1.0.0.0.0.1.0",
       "hier_label16": "b16:7F94B97CB90.q2",
       "hier_label32": "b32:FUABIV5P1.b0",
-      "branch_length": "2"
+      "branch_length": "2",
+      "polytomy": "3"
     }
   },
   {
@@ -5505,7 +5585,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.1.1.1.1.0.0.1.0.1.1.1.0.0.1.0.1.1",
       "hier_label16": "b16:7F94B97CB9.o3",
       "hier_label32": "b32:FUABIV5P.o3",
-      "branch_length": "4"
+      "branch_length": "4",
+      "polytomy": "4"
     }
   },
   {
@@ -5608,7 +5689,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0",
       "hier_label16": "b16:7F94B94.q2",
       "hier_label32": "b32:FUABII",
-      "branch_length": "1"
+      "branch_length": "1",
+      "root_ancestor": "true"
     }
   },
   {
@@ -5623,7 +5705,8 @@
       "hier_label16": "b16:7F94B94.o4",
       "hier_label32": "b32:FUABII.b0",
       "_pt_highlight": "#f4a8a8",
-      "branch_length": "10"
+      "branch_length": "10",
+      "root_ancestor": "true"
     }
   },
   {
@@ -5871,7 +5954,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1",
       "hier_label16": "b16:7F94B94.o5",
       "hier_label32": "b32:FUABII.b1",
-      "branch_length": "27"
+      "branch_length": "27",
+      "root_ancestor": "true"
     }
   },
   {
@@ -5886,7 +5970,8 @@
       "hier_label16": "b16:7F94B94A",
       "hier_label32": "b32:FUABII.q2",
       "_pt_highlight": "#a8c8f4",
-      "branch_length": "57"
+      "branch_length": "57",
+      "root_ancestor": "true"
     }
   },
   {
@@ -5931,7 +6016,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1",
       "hier_label16": "b16:7F94B94B",
       "hier_label32": "b32:FUABII.q3",
-      "branch_length": "8"
+      "branch_length": "8",
+      "root_ancestor": "true"
     }
   },
   {
@@ -5946,7 +6032,8 @@
       "hier_label16": "b16:7F94B94B.b0",
       "hier_label32": "b32:FUABII.o6",
       "_pt_highlight": "#f4d4a8",
-      "branch_length": "9"
+      "branch_length": "9",
+      "root_ancestor": "true"
     }
   },
   {
@@ -6021,7 +6108,9 @@
       "hier_label16": "b16:7F94B94B.b1",
       "hier_label32": "b32:FUABII.o7",
       "_pt_highlight": "#d4a8f4",
-      "branch_length": "67"
+      "branch_length": "67",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -6035,7 +6124,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0",
       "hier_label16": "b16:7F94B94B.q2",
       "hier_label32": "b32:FUABII.he",
-      "branch_length": "2"
+      "branch_length": "2",
+      "root_ancestor": "true"
     }
   },
   {
@@ -6110,7 +6200,9 @@
       "hier_label16": "b16:7F94B94B.q3",
       "hier_label32": "b32:FUABII.hf",
       "_pt_highlight": "#4e79a7",
-      "branch_length": "2"
+      "branch_length": "2",
+      "root_ancestor": "true",
+      "polytomy": "20"
     }
   },
   {
@@ -6482,7 +6574,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.1.1.0.0.1.0",
       "hier_label16": "b16:7F94B94BE.o2",
       "hier_label32": "b32:FUABIIV.h2",
-      "branch_length": "2"
+      "branch_length": "2",
+      "polytomy": "3"
     }
   },
   {
@@ -6541,7 +6634,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.1.1.0.0.1.1",
       "hier_label16": "b16:7F94B94BE.o3",
       "hier_label32": "b32:FUABIIV.h3",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "5"
     }
   },
   {
@@ -6615,7 +6709,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.1.1.0.0.1.1.0.1.0.0",
       "hier_label16": "b16:7F94B94BE6.o4",
       "hier_label32": "b32:FUABIIV6.o4",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "3"
     }
   },
   {
@@ -6674,7 +6769,9 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0",
       "hier_label16": "b16:7F94B94B9.b0",
       "hier_label32": "b32:FUABIIS.q2",
-      "branch_length": "1"
+      "branch_length": "1",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -6733,7 +6830,8 @@
       "hier_label16": "b16:7F94B94B9.q1",
       "hier_label32": "b32:FUABIIS.o5",
       "_pt_highlight": "#e15759",
-      "branch_length": "6"
+      "branch_length": "6",
+      "root_ancestor": "true"
     }
   },
   {
@@ -6747,7 +6845,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0",
       "hier_label16": "b16:7F94B94B9.o2",
       "hier_label32": "b32:FUABIIS.ha",
-      "branch_length": "3"
+      "branch_length": "3",
+      "root_ancestor": "true"
     }
   },
   {
@@ -6792,7 +6891,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.1",
       "hier_label16": "b16:7F94B94B9.o3",
       "hier_label32": "b32:FUABIIS.hb",
-      "branch_length": "2"
+      "branch_length": "2",
+      "polytomy": "3"
     }
   },
   {
@@ -6821,7 +6921,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.1.1",
       "hier_label16": "b16:7F94B94B97",
       "hier_label32": "b32:FUABIISN",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "3"
     }
   },
   {
@@ -6880,7 +6981,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.1.0.0.1.0",
       "hier_label16": "b16:7F94B94B96.o2",
       "hier_label32": "b32:FUABIISM.o2",
-      "branch_length": "6"
+      "branch_length": "6",
+      "polytomy": "5"
     }
   },
   {
@@ -6969,7 +7071,9 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0",
       "hier_label16": "b16:7F94B94B91.b0",
       "hier_label32": "b32:FUABIISH.b0",
-      "branch_length": "1"
+      "branch_length": "1",
+      "root_ancestor": "true",
+      "polytomy": "5"
     }
   },
   {
@@ -7043,7 +7147,8 @@
       "hier_label16": "b16:7F94B94B911.b0",
       "hier_label32": "b32:FUABIISH2",
       "_pt_highlight": "#76b7b2",
-      "branch_length": "3"
+      "branch_length": "3",
+      "root_ancestor": "true"
     }
   },
   {
@@ -7057,7 +7162,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.0.1.0.0",
       "hier_label16": "b16:7F94B94B911.q0",
       "hier_label32": "b32:FUABIISH2.b0",
-      "branch_length": "5"
+      "branch_length": "5",
+      "root_ancestor": "true"
     }
   },
   {
@@ -7176,7 +7282,9 @@
       "hier_label16": "b16:7F94B94B911.b1",
       "hier_label32": "b32:FUABIISH3",
       "_pt_highlight": "#017280",
-      "branch_length": "1"
+      "branch_length": "1",
+      "root_ancestor": "true",
+      "polytomy": "5"
     }
   },
   {
@@ -7265,7 +7373,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.0.1.1.0.0.1.1",
       "hier_label16": "b16:7F94B94B9119.b1",
       "hier_label32": "b32:FUABIISH3.h3",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "3"
     }
   },
   {
@@ -7353,7 +7462,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.0.1.1.0.1.0.0",
       "hier_label16": "b16:7F94B94B911A.b0",
       "hier_label32": "b32:FUABIISH3.h4",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "4"
     }
   },
   {
@@ -7485,7 +7595,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0",
       "hier_label16": "b16:7F94B94B912.b0",
       "hier_label32": "b32:FUABIISH4",
-      "branch_length": "1"
+      "branch_length": "1",
+      "root_ancestor": "true"
     }
   },
   {
@@ -7543,7 +7654,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0.1",
       "hier_label16": "b16:7F94B94B912.q1",
       "hier_label32": "b32:FUABIISH4.b1",
-      "branch_length": "3"
+      "branch_length": "3",
+      "root_ancestor": "true"
     }
   },
   {
@@ -7572,7 +7684,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0.1.1",
       "hier_label16": "b16:7F94B94B912.o3",
       "hier_label32": "b32:FUABIISH4.q3",
-      "branch_length": "1"
+      "branch_length": "1",
+      "root_ancestor": "true"
     }
   },
   {
@@ -7630,7 +7743,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0.1.1.1",
       "hier_label16": "b16:7F94B94B9127",
       "hier_label32": "b32:FUABIISH4.o7",
-      "branch_length": "1"
+      "branch_length": "1",
+      "root_ancestor": "true"
     }
   },
   {
@@ -7644,7 +7758,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0.1.1.1.0",
       "hier_label16": "b16:7F94B94B9127.b0",
       "hier_label32": "b32:FUABIISH4.he",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "3"
     }
   },
   {
@@ -7732,7 +7847,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0.1.1.1.1",
       "hier_label16": "b16:7F94B94B9127.b1",
       "hier_label32": "b32:FUABIISH4.hf",
-      "branch_length": "1"
+      "branch_length": "1",
+      "root_ancestor": "true"
     }
   },
   {
@@ -7747,7 +7863,9 @@
       "hier_label16": "b16:7F94B94B9127.q2",
       "hier_label32": "b32:FUABIISH4U",
       "_pt_highlight": "#2a6b5a",
-      "branch_length": "2"
+      "branch_length": "2",
+      "root_ancestor": "true",
+      "polytomy": "4"
     }
   },
   {
@@ -7880,7 +7998,9 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0.1.1.1.1.1",
       "hier_label16": "b16:7F94B94B9127.q3",
       "hier_label32": "b32:FUABIISH4V",
-      "branch_length": "2"
+      "branch_length": "2",
+      "root_ancestor": "true",
+      "polytomy": "4"
     }
   },
   {
@@ -7909,7 +8029,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0.1.1.1.1.1.1",
       "hier_label16": "b16:7F94B94B9127.o7",
       "hier_label32": "b32:FUABIISH4V.b1",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "3"
     }
   },
   {
@@ -7968,7 +8089,9 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0.1.1.1.1.1.0.0.1.0",
       "hier_label16": "b16:7F94B94B9127C.q2",
       "hier_label32": "b32:FUABIISH4V.h2",
-      "branch_length": "1"
+      "branch_length": "1",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -8100,7 +8223,9 @@
       "hier_label16": "b16:7F94B94B9127C8.q2",
       "hier_label32": "b32:FUABIISH4V4.o2",
       "_pt_highlight": "#40847d",
-      "branch_length": "1"
+      "branch_length": "1",
+      "root_ancestor": "true",
+      "polytomy": "5"
     }
   },
   {
@@ -8175,7 +8300,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0.1.1.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0",
       "hier_label16": "b16:7F94B94B9127C89.q0",
       "hier_label32": "b32:FUABIISH4V49.q0",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "6"
     }
   },
   {
@@ -8309,7 +8435,9 @@
       "hier_label16": "b16:7F94B94B9127C.q3",
       "hier_label32": "b32:FUABIISH4V.h3",
       "_pt_highlight": "#d95a47",
-      "branch_length": "3"
+      "branch_length": "3",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -8323,7 +8451,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0.1.1.1.1.1.0.0.1.1.0",
       "hier_label16": "b16:7F94B94B9127C.o6",
       "hier_label32": "b32:FUABIISH4V6",
-      "branch_length": "8"
+      "branch_length": "8",
+      "root_ancestor": "true"
     }
   },
   {
@@ -8369,7 +8498,9 @@
       "hier_label16": "b16:7F94B94B9127C.o7",
       "hier_label32": "b32:FUABIISH4V7",
       "_pt_highlight": "#7d2e46",
-      "branch_length": "5"
+      "branch_length": "5",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -8443,7 +8574,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0.1.1.1.1.1.0.0.1.1.1.0.0.1.0",
       "hier_label16": "b16:7F94B94B9127CE.o2",
       "hier_label32": "b32:FUABIISH4V7.h2",
-      "branch_length": "1"
+      "branch_length": "1",
+      "polytomy": "4"
     }
   },
   {
@@ -8576,7 +8708,9 @@
       "hier_label16": "b16:7F94B94B9127CC.q2",
       "hier_label32": "b32:FUABIISH4V6.o2",
       "_pt_highlight": "#c06b82",
-      "branch_length": "4"
+      "branch_length": "4",
+      "root_ancestor": "true",
+      "polytomy": "4"
     }
   },
   {
@@ -8781,7 +8915,8 @@
       "hier_label2": "0.1.1.1.1.1.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.1.0.0.1.0.1.1.1.0.0.1.0.0.0.1.0.0.1.0.0.1.1.1.1.1.0.0.1.1.0.0.1.0.0.0.1.1.1.1",
       "hier_label16": "b16:7F94B94B9127CC8F",
       "hier_label32": "b32:FUABIISH4V68.hf",
-      "branch_length": "2"
+      "branch_length": "2",
+      "polytomy": "3"
     }
   },
   {

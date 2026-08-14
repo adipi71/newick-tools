@@ -9,7 +9,8 @@
       "hier_label": "0",
       "hier_label2": "0",
       "hier_label16": "b16:0",
-      "hier_label32": "b32:0"
+      "hier_label32": "b32:0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -23,7 +24,8 @@
       "hier_label2": "0",
       "hier_label16": "b16:0",
       "hier_label32": "b32:0",
-      "branch_length": "0.0"
+      "branch_length": "0.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -37,7 +39,8 @@
       "hier_label2": "0.0",
       "hier_label16": "b16:.q0",
       "hier_label32": "b32:.q0",
-      "branch_length": "452.0"
+      "branch_length": "452.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -51,7 +54,8 @@
       "hier_label2": "0.0.0",
       "hier_label16": "b16:.o0",
       "hier_label32": "b32:.o0",
-      "branch_length": "267.0"
+      "branch_length": "267.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -65,7 +69,8 @@
       "hier_label2": "0.0.0.0",
       "hier_label16": "b16:0",
       "hier_label32": "b32:.h0",
-      "branch_length": "165.0"
+      "branch_length": "165.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -79,7 +84,8 @@
       "hier_label2": "0.0.0.0.0",
       "hier_label16": "b16:0.b0",
       "hier_label32": "b32:0",
-      "branch_length": "14.0"
+      "branch_length": "14.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -93,7 +99,8 @@
       "hier_label2": "0.0.0.0.0.0",
       "hier_label16": "b16:0.q0",
       "hier_label32": "b32:0.b0",
-      "branch_length": "45.0"
+      "branch_length": "45.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -107,7 +114,8 @@
       "hier_label2": "0.0.0.0.0.0.0",
       "hier_label16": "b16:0.o0",
       "hier_label32": "b32:0.q0",
-      "branch_length": "60.0"
+      "branch_length": "60.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -121,7 +129,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0",
       "hier_label16": "b16:00",
       "hier_label32": "b32:0.o0",
-      "branch_length": "130.0"
+      "branch_length": "130.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -135,7 +144,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0",
       "hier_label16": "b16:00.b0",
       "hier_label32": "b32:0.h0",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -149,7 +159,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0",
       "hier_label16": "b16:00.q0",
       "hier_label32": "b32:00",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -163,7 +174,9 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0",
       "hier_label16": "b16:00.o0",
       "hier_label32": "b32:00.b0",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -177,7 +190,9 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0",
       "hier_label16": "b16:000",
       "hier_label32": "b32:00.q0",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -191,7 +206,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0.0",
       "hier_label16": "b16:000.b0",
       "hier_label32": "b32:00.o0",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -205,7 +221,9 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0.0.0",
       "hier_label16": "b16:000.q0",
       "hier_label32": "b32:00.h0",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "root_ancestor": "true",
+      "polytomy": "5"
     }
   },
   {
@@ -219,7 +237,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0",
       "hier_label16": "b16:000.o0",
       "hier_label32": "b32:000",
-      "branch_length": "16.0"
+      "branch_length": "16.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -233,7 +252,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0",
       "hier_label16": "b16:0000",
       "hier_label32": "b32:000.b0",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -247,7 +267,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0",
       "hier_label16": "b16:0000.b0",
       "hier_label32": "b32:000.q0",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -264,7 +285,8 @@
       "color": "#006666",
       "hilight": "{366,72.0,#ffffcc}",
       "branch_length": "5.0",
-      "root_color": "#006666"
+      "root_color": "#006666",
+      "polytomy": "5"
     }
   },
   {
@@ -280,7 +302,9 @@
       "hier_label32": "b32:000.h0",
       "color": "#006666",
       "hilight": "{215,72.0,#f0f0f0}",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -313,7 +337,8 @@
       "hier_label32": "b32:0000.b0",
       "color": "#99ccff",
       "hilight": "{209,72.0,#99ccff}",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -329,7 +354,8 @@
       "hier_label32": "b32:0000.q0",
       "color": "#99ccff",
       "hilight": "{200,72.0,#99ccff}",
-      "branch_length": "8.0"
+      "branch_length": "8.0",
+      "polytomy": "3"
     }
   },
   {
@@ -344,7 +370,8 @@
       "hier_label16": "b16:00000.o0",
       "hier_label32": "b32:0000.o0",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -375,7 +402,8 @@
       "hier_label32": "b32:00000",
       "color": "#99ccff",
       "hilight": "{143,72.0,#99ccff}",
-      "branch_length": "6.0"
+      "branch_length": "6.0",
+      "polytomy": "5"
     }
   },
   {
@@ -436,7 +464,8 @@
       "hier_label16": "b16:0000000.b0",
       "hier_label32": "b32:00000.h0",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "8"
     }
   },
   {
@@ -452,7 +481,8 @@
       "hier_label32": "b32:000000",
       "color": "#99ccff",
       "hilight": "{70,72.0,#f0f0f0}",
-      "branch_length": "10.0"
+      "branch_length": "10.0",
+      "polytomy": "5"
     }
   },
   {
@@ -468,7 +498,8 @@
       "hier_label32": "b32:000000.b0",
       "color": "#99ccff",
       "hilight": "{62,72.0,#ccccff}",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "5"
     }
   },
   {
@@ -559,7 +590,8 @@
       "hier_label16": "b16:000000000.b0",
       "hier_label32": "b32:0000000.q0",
       "color": "#99ccff",
-      "branch_length": "5.0"
+      "branch_length": "5.0",
+      "polytomy": "3"
     }
   },
   {
@@ -589,7 +621,8 @@
       "hier_label16": "b16:000000000.o0",
       "hier_label32": "b32:0000000.h0",
       "color": "#99ccff",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "4"
     }
   },
   {
@@ -604,7 +637,8 @@
       "hier_label16": "b16:0000000000",
       "hier_label32": "b32:00000000",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -1054,7 +1088,8 @@
       "hier_label16": "b16:000000000.b1",
       "hier_label32": "b32:0000000.q1",
       "color": "#99ccff",
-      "branch_length": "5.0"
+      "branch_length": "5.0",
+      "polytomy": "4"
     }
   },
   {
@@ -1159,7 +1194,8 @@
       "hier_label16": "b16:000000001",
       "hier_label32": "b32:0000000.b1",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -1189,7 +1225,8 @@
       "hier_label16": "b16:000000001.q0",
       "hier_label32": "b32:0000000.o4",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -1279,7 +1316,8 @@
       "hier_label16": "b16:000000001.b1",
       "hier_label32": "b32:0000000.q3",
       "color": "#99ccff",
-      "branch_length": "13.0"
+      "branch_length": "13.0",
+      "polytomy": "3"
     }
   },
   {
@@ -1384,7 +1422,8 @@
       "hier_label16": "b16:00000000.o2",
       "hier_label32": "b32:0000002",
       "color": "#99ccff",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "4"
     }
   },
   {
@@ -1489,7 +1528,8 @@
       "hier_label16": "b16:0000000040.q0",
       "hier_label32": "b32:00000020.q0",
       "color": "#99ccff",
-      "branch_length": "9.0"
+      "branch_length": "9.0",
+      "polytomy": "3"
     }
   },
   {
@@ -2074,7 +2114,8 @@
       "hier_label16": "b16:0000000.o1",
       "hier_label32": "b32:000000.b1",
       "color": "#99ccff",
-      "branch_length": "5.0"
+      "branch_length": "5.0",
+      "polytomy": "3"
     }
   },
   {
@@ -2269,7 +2310,8 @@
       "hier_label16": "b16:00000004",
       "hier_label32": "b32:000001.q0",
       "color": "#99ccff",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "3"
     }
   },
   {
@@ -2434,7 +2476,8 @@
       "hier_label16": "b16:0000000.o3",
       "hier_label32": "b32:000001.b1",
       "color": "#99ccff",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -2449,7 +2492,8 @@
       "hier_label16": "b16:00000006",
       "hier_label32": "b32:000001.q2",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -2539,7 +2583,8 @@
       "hier_label16": "b16:00000001.b0",
       "hier_label32": "b32:000000.o2",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -2900,7 +2945,8 @@
       "hier_label32": "b32:00000.o1",
       "color": "#99ccff",
       "hilight": "{3,181.0,#f0f0f0}",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -2992,7 +3038,8 @@
       "hier_label32": "b32:00000.q2",
       "color": "#99ccff",
       "hilight": "{26,129.0,#ccccff}",
-      "branch_length": "5.0"
+      "branch_length": "5.0",
+      "polytomy": "5"
     }
   },
   {
@@ -3022,7 +3069,8 @@
       "hier_label16": "b16:0000004.b0",
       "hier_label32": "b32:00000.h8",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -3037,7 +3085,8 @@
       "hier_label16": "b16:0000004.q0",
       "hier_label32": "b32:00000G",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -3142,7 +3191,8 @@
       "hier_label16": "b16:0000004.q1",
       "hier_label32": "b32:00000H",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -3277,7 +3327,8 @@
       "hier_label16": "b16:0000005",
       "hier_label32": "b32:00000.o5",
       "color": "#99ccff",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "5"
     }
   },
   {
@@ -3397,7 +3448,8 @@
       "hier_label16": "b16:0000004.o2",
       "hier_label32": "b32:00000H.b0",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -3803,7 +3855,8 @@
       "hier_label16": "b16:0000001.o0",
       "hier_label32": "b32:000004.b0",
       "color": "#99ccff",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "3"
     }
   },
   {
@@ -3969,7 +4022,8 @@
       "hier_label16": "b16:000000.q2",
       "hier_label32": "b32:00001.b0",
       "color": "#99ccff",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "6"
     }
   },
   {
@@ -3984,7 +4038,8 @@
       "hier_label16": "b16:000000.o4",
       "hier_label32": "b32:00001.q0",
       "color": "#99ccff",
-      "branch_length": "5.0"
+      "branch_length": "5.0",
+      "polytomy": "4"
     }
   },
   {
@@ -3999,7 +4054,8 @@
       "hier_label16": "b16:0000008",
       "hier_label32": "b32:00001.o0",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "9"
     }
   },
   {
@@ -4359,7 +4415,8 @@
       "hier_label16": "b16:000000A",
       "hier_label32": "b32:00001.o2",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "5"
     }
   },
   {
@@ -4554,7 +4611,8 @@
       "hier_label16": "b16:00000088",
       "hier_label32": "b32:000012.q0",
       "color": "#99ccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -4644,7 +4702,8 @@
       "hier_label16": "b16:0000008.q3",
       "hier_label32": "b32:000013",
       "color": "#99ccff",
-      "branch_length": "8.0"
+      "branch_length": "8.0",
+      "polytomy": "4"
     }
   },
   {
@@ -4794,7 +4853,8 @@
       "hier_label16": "b16:000001",
       "hier_label32": "b32:0000.h1",
       "color": "#99ccff",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -4824,7 +4884,8 @@
       "hier_label16": "b16:000001.q0",
       "hier_label32": "b32:00002.b0",
       "color": "#99ccff",
-      "branch_length": "7.0"
+      "branch_length": "7.0",
+      "polytomy": "3"
     }
   },
   {
@@ -5289,7 +5350,8 @@
       "hier_label16": "b16:00000.o2",
       "hier_label32": "b32:0000.o2",
       "color": "#99ccff",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -5305,7 +5367,8 @@
       "hier_label32": "b32:0000.h4",
       "color": "#99ccff",
       "hilight": "{4,185.0,#f0f0f0}",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -5501,7 +5564,8 @@
       "hier_label16": "b16:00001",
       "hier_label32": "b32:0001",
       "color": "#006666",
-      "branch_length": "13.0"
+      "branch_length": "13.0",
+      "polytomy": "3"
     }
   },
   {
@@ -5606,7 +5670,9 @@
       "hier_label16": "b16:0000.o1",
       "hier_label32": "b32:000.h1",
       "color": "#006666",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "root_ancestor": "true",
+      "polytomy": "8"
     }
   },
   {
@@ -5653,7 +5719,8 @@
       "hier_label16": "b16:00002.q0",
       "hier_label32": "b32:0002.q0",
       "color": "#ff0000",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "6"
     }
   },
   {
@@ -5668,7 +5735,8 @@
       "hier_label16": "b16:00002.o0",
       "hier_label32": "b32:0002.o0",
       "color": "#ff0000",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "4"
     }
   },
   {
@@ -5743,7 +5811,8 @@
       "hier_label16": "b16:0000200",
       "hier_label32": "b32:00020.o0",
       "color": "#ff0000",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "5"
     }
   },
   {
@@ -5758,7 +5827,8 @@
       "hier_label16": "b16:0000200.b0",
       "hier_label32": "b32:00020.h0",
       "color": "#ff0000",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -5773,7 +5843,8 @@
       "hier_label16": "b16:0000200.q0",
       "hier_label32": "b32:000200",
       "color": "#ff0000",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -5803,7 +5874,8 @@
       "hier_label16": "b16:00002000",
       "hier_label32": "b32:000200.q0",
       "color": "#ff0000",
-      "branch_length": "6.0"
+      "branch_length": "6.0",
+      "polytomy": "4"
     }
   },
   {
@@ -5818,7 +5890,8 @@
       "hier_label16": "b16:00002000.b0",
       "hier_label32": "b32:000200.o0",
       "color": "#ff0000",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "3"
     }
   },
   {
@@ -5833,7 +5906,8 @@
       "hier_label16": "b16:00002000.q0",
       "hier_label32": "b32:000200.h0",
       "color": "#ff0000",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -5953,7 +6027,8 @@
       "hier_label16": "b16:00002000.b1",
       "hier_label32": "b32:000200.o1",
       "color": "#ff0000",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -6148,7 +6223,8 @@
       "hier_label16": "b16:00002001.b0",
       "hier_label32": "b32:000200.o2",
       "color": "#ff0000",
-      "branch_length": "0.0"
+      "branch_length": "0.0",
+      "polytomy": "3"
     }
   },
   {
@@ -6163,7 +6239,8 @@
       "hier_label16": "b16:00002001.q0",
       "hier_label32": "b32:000200.h4",
       "color": "#ff0000",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "4"
     }
   },
   {
@@ -6343,7 +6420,8 @@
       "hier_label16": "b16:0000200.o1",
       "hier_label32": "b32:000200.b1",
       "color": "#ff0000",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -6358,7 +6436,8 @@
       "hier_label16": "b16:00002002",
       "hier_label32": "b32:000200.q2",
       "color": "#ff0000",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "5"
     }
   },
   {
@@ -6373,7 +6452,8 @@
       "hier_label16": "b16:00002002.b0",
       "hier_label32": "b32:000200.o4",
       "color": "#ff0000",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -6433,7 +6513,8 @@
       "hier_label16": "b16:00002002.b1",
       "hier_label32": "b32:000200.o5",
       "color": "#ff0000",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -7288,7 +7369,8 @@
       "hier_label16": "b16:00002.o1",
       "hier_label32": "b32:0002.o1",
       "color": "#ff0000",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "8"
     }
   },
   {
@@ -7543,7 +7625,8 @@
       "hier_label16": "b16:000020.q2",
       "hier_label32": "b32:00021.b0",
       "color": "#ff0000",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -7573,7 +7656,8 @@
       "hier_label16": "b16:0000208",
       "hier_label32": "b32:00021.o0",
       "color": "#ff0000",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -7813,7 +7897,8 @@
       "hier_label16": "b16:00002.q1",
       "hier_label32": "b32:0002.q1",
       "color": "#ff0000",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -7843,7 +7928,8 @@
       "hier_label16": "b16:000024",
       "hier_label32": "b32:0002.h4",
       "color": "#ff0000",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -8038,7 +8124,8 @@
       "hier_label16": "b16:00003",
       "hier_label32": "b32:0003",
       "color": "#006666",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -8053,7 +8140,8 @@
       "hier_label16": "b16:00003.b0",
       "hier_label32": "b32:0003.b0",
       "color": "#006666",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -8083,7 +8171,8 @@
       "hier_label16": "b16:00003.o0",
       "hier_label32": "b32:0003.o0",
       "color": "#006666",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -8098,7 +8187,8 @@
       "hier_label16": "b16:000030",
       "hier_label32": "b32:0003.h0",
       "color": "#006666",
-      "branch_length": "6.0"
+      "branch_length": "6.0",
+      "polytomy": "3"
     }
   },
   {
@@ -8218,7 +8308,8 @@
       "hier_label16": "b16:000031",
       "hier_label32": "b32:0003.h1",
       "color": "#006666",
-      "branch_length": "5.0"
+      "branch_length": "5.0",
+      "polytomy": "3"
     }
   },
   {
@@ -8293,7 +8384,8 @@
       "hier_label16": "b16:00003.o1",
       "hier_label32": "b32:0003.o1",
       "color": "#006666",
-      "branch_length": "9.0"
+      "branch_length": "9.0",
+      "polytomy": "3"
     }
   },
   {
@@ -8353,7 +8445,8 @@
       "hier_label16": "b16:00003.q1",
       "hier_label32": "b32:0003.q1",
       "color": "#006666",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "4"
     }
   },
   {
@@ -8368,7 +8461,8 @@
       "hier_label16": "b16:00003.o2",
       "hier_label32": "b32:0003.o2",
       "color": "#006666",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -8458,7 +8552,8 @@
       "hier_label16": "b16:00003.o3",
       "hier_label32": "b32:0003.o3",
       "color": "#006666",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -8653,7 +8748,8 @@
       "hier_label16": "b16:00002.o2",
       "hier_label32": "b32:0002.o2",
       "color": "#006666",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -8803,7 +8899,8 @@
       "hier_label16": "b16:00002.o3",
       "hier_label32": "b32:0002.o3",
       "color": "#006666",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -8893,7 +8990,8 @@
       "hier_label16": "b16:00002.o4",
       "hier_label32": "b32:0002.o4",
       "color": "#006666",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -9028,7 +9126,8 @@
       "hier_label16": "b16:00000.q2",
       "hier_label32": "b32:0000.q2",
       "color": "#006666",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "6"
     }
   },
   {
@@ -9222,7 +9321,8 @@
       "hier_label16": "b16:00008",
       "hier_label32": "b32:0008",
       "color": "#006633",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -9237,7 +9337,8 @@
       "hier_label16": "b16:00008.b0",
       "hier_label32": "b32:0008.b0",
       "color": "#006633",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "6"
     }
   },
   {
@@ -9297,7 +9398,8 @@
       "hier_label16": "b16:000080.b0",
       "hier_label32": "b32:00080",
       "color": "#006633",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -9327,7 +9429,8 @@
       "hier_label16": "b16:000080.o0",
       "hier_label32": "b32:00080.q0",
       "color": "#006633",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "4"
     }
   },
   {
@@ -9955,7 +10058,9 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1",
       "hier_label16": "b16:0001",
       "hier_label32": "b32:000.b1",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "root_ancestor": "true",
+      "polytomy": "3"
     }
   },
   {
@@ -9972,7 +10077,8 @@
       "color": "#006633",
       "hilight": "{18,203.0,#ccffcc}",
       "branch_length": "15.0",
-      "root_color": "#006633"
+      "root_color": "#006633",
+      "polytomy": "11"
     }
   },
   {
@@ -9987,7 +10093,8 @@
       "hier_label16": "b16:0001.q0",
       "hier_label32": "b32:000.o4",
       "color": "#006633",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -10374,7 +10481,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0.0.0.1",
       "hier_label16": "b16:000.o1",
       "hier_label32": "b32:001",
-      "branch_length": "0.0"
+      "branch_length": "0.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -10388,7 +10496,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0",
       "hier_label16": "b16:0002",
       "hier_label32": "b32:001.b0",
-      "branch_length": "11.0"
+      "branch_length": "11.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -10402,7 +10511,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0",
       "hier_label16": "b16:0002.b0",
       "hier_label32": "b32:001.q0",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -10416,7 +10526,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0.0",
       "hier_label16": "b16:0002.q0",
       "hier_label32": "b32:001.o0",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -10476,7 +10587,8 @@
       "hier_label16": "b16:00020.q0",
       "hier_label32": "b32:0010.q0",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -10491,7 +10603,8 @@
       "hier_label16": "b16:00020.o0",
       "hier_label32": "b32:0010.o0",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "6"
     }
   },
   {
@@ -10506,7 +10619,8 @@
       "hier_label16": "b16:000200",
       "hier_label32": "b32:0010.h0",
       "color": "#ff9900",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "6"
     }
   },
   {
@@ -10536,7 +10650,8 @@
       "hier_label16": "b16:000200.q0",
       "hier_label32": "b32:00100.b0",
       "color": "#ff9900",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -10581,7 +10696,8 @@
       "hier_label16": "b16:0002000.b0",
       "hier_label32": "b32:00100.h0",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -10971,7 +11087,8 @@
       "hier_label16": "b16:0002000.b1",
       "hier_label32": "b32:00100.h1",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -11601,7 +11718,8 @@
       "hier_label16": "b16:000200.o4",
       "hier_label32": "b32:00101.q0",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "8"
     }
   },
   {
@@ -11616,7 +11734,8 @@
       "hier_label16": "b16:0002008",
       "hier_label32": "b32:00101.o0",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "7"
     }
   },
   {
@@ -12051,7 +12170,8 @@
       "hier_label16": "b16:000200.o6",
       "hier_label32": "b32:00101.q2",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -12201,7 +12321,8 @@
       "hier_label16": "b16:0002002.b0",
       "hier_label32": "b32:00100.h4",
       "color": "#ff9900",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "5"
     }
   },
   {
@@ -12456,7 +12577,8 @@
       "hier_label16": "b16:0002003",
       "hier_label32": "b32:00100.o3",
       "color": "#ff9900",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -12471,7 +12593,8 @@
       "hier_label16": "b16:0002003.b0",
       "hier_label32": "b32:00100.h6",
       "color": "#ff9900",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -12651,7 +12774,8 @@
       "hier_label16": "b16:0002004",
       "hier_label32": "b32:00100.o4",
       "color": "#ff9900",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -12786,7 +12910,8 @@
       "hier_label16": "b16:0002005.b0",
       "hier_label32": "b32:00100.ha",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -12876,7 +13001,8 @@
       "hier_label16": "b16:000201.b0",
       "hier_label32": "b32:00102",
       "color": "#ff9900",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "7"
     }
   },
   {
@@ -12891,7 +13017,8 @@
       "hier_label16": "b16:000201.q0",
       "hier_label32": "b32:00102.b0",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -12906,7 +13033,8 @@
       "hier_label16": "b16:000201.o0",
       "hier_label32": "b32:00102.q0",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "5"
     }
   },
   {
@@ -12936,7 +13064,8 @@
       "hier_label16": "b16:0002010.b0",
       "hier_label32": "b32:00102.h0",
       "color": "#ff9900",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "9"
     }
   },
   {
@@ -12966,7 +13095,8 @@
       "hier_label16": "b16:0002010.o0",
       "hier_label32": "b32:001020.b0",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -12981,7 +13111,8 @@
       "hier_label16": "b16:00020100",
       "hier_label32": "b32:001020.q0",
       "color": "#ff9900",
-      "branch_length": "10.0"
+      "branch_length": "10.0",
+      "polytomy": "3"
     }
   },
   {
@@ -13146,7 +13277,8 @@
       "hier_label16": "b16:0002010.q1",
       "hier_label32": "b32:001021",
       "color": "#ff9900",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -13161,7 +13293,8 @@
       "hier_label16": "b16:0002010.o2",
       "hier_label32": "b32:001021.b0",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -13611,7 +13744,8 @@
       "hier_label16": "b16:000201.o1",
       "hier_label32": "b32:00102.q1",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -14016,7 +14150,8 @@
       "hier_label16": "b16:0002004",
       "hier_label32": "b32:00100.o4",
       "color": "#ff9900",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -14031,7 +14166,8 @@
       "hier_label16": "b16:0002004.b0",
       "hier_label32": "b32:00100.h8",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -14061,7 +14197,8 @@
       "hier_label16": "b16:0002004.o0",
       "hier_label32": "b32:00100G.b0",
       "color": "#ff9900",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "3"
     }
   },
   {
@@ -14196,7 +14333,8 @@
       "hier_label16": "b16:0002004.b1",
       "hier_label32": "b32:00100.h9",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -14301,7 +14439,8 @@
       "hier_label16": "b16:000200.o3",
       "hier_label32": "b32:00100.q3",
       "color": "#ff9900",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "4"
     }
   },
   {
@@ -14586,7 +14725,8 @@
       "hier_label16": "b16:00020.o1",
       "hier_label32": "b32:0010.o1",
       "color": "#ff9900",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "3"
     }
   },
   {
@@ -14601,7 +14741,8 @@
       "hier_label16": "b16:000202",
       "hier_label32": "b32:0010.h2",
       "color": "#ff9900",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -14971,7 +15112,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0.0.1.0.0.0",
       "hier_label16": "b16:00022.q0",
       "hier_label32": "b32:0012.q0",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -15296,7 +15438,8 @@
       "color": "#ff9966",
       "hilight": "{72,129.0,#ff9966}",
       "branch_length": "1.0",
-      "root_color": "#ff9966"
+      "root_color": "#ff9966",
+      "polytomy": "4"
     }
   },
   {
@@ -15371,7 +15514,8 @@
       "hier_label16": "b16:00028.q0",
       "hier_label32": "b32:0018.q0",
       "color": "#ff9966",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -15416,7 +15560,8 @@
       "hier_label16": "b16:000280.b0",
       "hier_label32": "b32:00180",
       "color": "#ff9966",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "13"
     }
   },
   {
@@ -15431,7 +15576,8 @@
       "hier_label16": "b16:000280.q0",
       "hier_label32": "b32:00180.b0",
       "color": "#ff9966",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -15446,7 +15592,8 @@
       "hier_label16": "b16:000280.o0",
       "hier_label32": "b32:00180.q0",
       "color": "#ff9966",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "5"
     }
   },
   {
@@ -15701,7 +15848,8 @@
       "hier_label16": "b16:000280.o2",
       "hier_label32": "b32:00180.q2",
       "color": "#ff9966",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -15866,7 +16014,8 @@
       "hier_label16": "b16:0002806",
       "hier_label32": "b32:00180.o6",
       "color": "#ff9966",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -15956,7 +16105,8 @@
       "hier_label16": "b16:0002801.q0",
       "hier_label32": "b32:001804",
       "color": "#ff9966",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "5"
     }
   },
   {
@@ -16061,7 +16211,8 @@
       "hier_label16": "b16:0002801.b1",
       "hier_label32": "b32:00180.h3",
       "color": "#ff9966",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -16286,7 +16437,8 @@
       "hier_label16": "b16:0002802.b1",
       "hier_label32": "b32:00180.h5",
       "color": "#ff9966",
-      "branch_length": "7.0"
+      "branch_length": "7.0",
+      "polytomy": "3"
     }
   },
   {
@@ -16706,7 +16858,8 @@
       "hier_label16": "b16:00028.o4",
       "hier_label32": "b32:0018.o4",
       "color": "#ff9966",
-      "branch_length": "9.0"
+      "branch_length": "9.0",
+      "polytomy": "4"
     }
   },
   {
@@ -17105,7 +17258,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0",
       "hier_label16": "b16:0000.q2",
       "hier_label32": "b32:000.o2",
-      "branch_length": "6.0"
+      "branch_length": "6.0",
+      "polytomy": "4"
     }
   },
   {
@@ -17259,7 +17413,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.0.0.1",
       "hier_label16": "b16:000.q1",
       "hier_label32": "b32:00.h1",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -17290,7 +17445,8 @@
       "hier_label16": "b16:0004",
       "hier_label32": "b32:002.b0",
       "color": "#ff9999",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "4"
     }
   },
   {
@@ -17305,7 +17461,8 @@
       "hier_label16": "b16:0004.b0",
       "hier_label32": "b32:002.q0",
       "color": "#ff9999",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "4"
     }
   },
   {
@@ -17710,7 +17867,8 @@
       "hier_label16": "b16:000.o4",
       "hier_label32": "b32:004",
       "color": "#ff9900",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "4"
     }
   },
   {
@@ -17725,7 +17883,8 @@
       "hier_label16": "b16:0008",
       "hier_label32": "b32:004.b0",
       "color": "#ff9900",
-      "branch_length": "13.0"
+      "branch_length": "13.0",
+      "polytomy": "4"
     }
   },
   {
@@ -17740,7 +17899,8 @@
       "hier_label16": "b16:0008.b0",
       "hier_label32": "b32:004.q0",
       "color": "#ff9900",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -17950,7 +18110,8 @@
       "hier_label16": "b16:0009.b0",
       "hier_label32": "b32:004.q2",
       "color": "#ff9900",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -18383,7 +18544,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.1.0.0.0",
       "hier_label16": "b16:001.o0",
       "hier_label32": "b32:008",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "5"
     }
   },
   {
@@ -18397,7 +18559,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.0.1.0.0.0.0",
       "hier_label16": "b16:0010",
       "hier_label32": "b32:008.b0",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "4"
     }
   },
   {
@@ -18652,7 +18815,8 @@
       "color": "#009966",
       "hilight": "{8,222.0,#ccffcc}",
       "branch_length": "28.0",
-      "root_color": "#009966"
+      "root_color": "#009966",
+      "polytomy": "8"
     }
   },
   {
@@ -18786,7 +18950,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1",
       "hier_label16": "b16:00.o1",
       "hier_label32": "b32:00.b1",
-      "branch_length": "15.0"
+      "branch_length": "15.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -18800,7 +18965,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.0",
       "hier_label16": "b16:002",
       "hier_label32": "b32:00.q2",
-      "branch_length": "6.0"
+      "branch_length": "6.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -18814,7 +18980,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.0.0",
       "hier_label16": "b16:002.b0",
       "hier_label32": "b32:00.o4",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -18828,7 +18995,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.0.0.0",
       "hier_label16": "b16:002.q0",
       "hier_label32": "b32:00.h8",
-      "branch_length": "10.0"
+      "branch_length": "10.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -18842,7 +19010,9 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.0.0.0.0",
       "hier_label16": "b16:002.o0",
       "hier_label32": "b32:00G",
-      "branch_length": "11.0"
+      "branch_length": "11.0",
+      "root_ancestor": "true",
+      "polytomy": "4"
     }
   },
   {
@@ -18859,7 +19029,8 @@
       "color": "#ff0099",
       "hilight": "{144,137.0,#ff66cc}",
       "branch_length": "7.0",
-      "root_color": "#ff0099"
+      "root_color": "#ff0099",
+      "polytomy": "5"
     }
   },
   {
@@ -18875,7 +19046,8 @@
       "hier_label32": "b32:00G.q0",
       "color": "#ff0099",
       "hilight": "{94,173.0,#3333ff}",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "8"
     }
   },
   {
@@ -18890,7 +19062,8 @@
       "hier_label16": "b16:0020.q0",
       "hier_label32": "b32:00G.o0",
       "color": "#ff0099",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -18905,7 +19078,8 @@
       "hier_label16": "b16:0020.o0",
       "hier_label32": "b32:00G.h0",
       "color": "#ff0099",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -18920,7 +19094,8 @@
       "hier_label16": "b16:00200",
       "hier_label32": "b32:00G0",
       "color": "#ff0099",
-      "branch_length": "7.0"
+      "branch_length": "7.0",
+      "polytomy": "8"
     }
   },
   {
@@ -18950,7 +19125,8 @@
       "hier_label16": "b16:00200.q0",
       "hier_label32": "b32:00G0.q0",
       "color": "#ff0099",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -18965,7 +19141,8 @@
       "hier_label16": "b16:00200.o0",
       "hier_label32": "b32:00G0.o0",
       "color": "#ff0099",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "5"
     }
   },
   {
@@ -19205,7 +19382,8 @@
       "hier_label16": "b16:00200.b1",
       "hier_label32": "b32:00G0.b1",
       "color": "#ff0099",
-      "branch_length": "5.0"
+      "branch_length": "5.0",
+      "polytomy": "3"
     }
   },
   {
@@ -19340,7 +19518,8 @@
       "hier_label16": "b16:002002.b0",
       "hier_label32": "b32:00G04",
       "color": "#ff0099",
-      "branch_length": "5.0"
+      "branch_length": "5.0",
+      "polytomy": "3"
     }
   },
   {
@@ -19415,7 +19594,8 @@
       "hier_label16": "b16:002003",
       "hier_label32": "b32:00G0.h3",
       "color": "#ff0099",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "4"
     }
   },
   {
@@ -19790,7 +19970,8 @@
       "hier_label16": "b16:00204",
       "hier_label32": "b32:00G4",
       "color": "#ff0099",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -19805,7 +19986,8 @@
       "hier_label16": "b16:00204.b0",
       "hier_label32": "b32:00G4.b0",
       "color": "#ff0099",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -19820,7 +20002,8 @@
       "hier_label16": "b16:00204.q0",
       "hier_label32": "b32:00G4.q0",
       "color": "#ff0099",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "6"
     }
   },
   {
@@ -20075,7 +20258,8 @@
       "hier_label16": "b16:0020.o3",
       "hier_label32": "b32:00G.h3",
       "color": "#ff0099",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -20255,7 +20439,8 @@
       "hier_label16": "b16:00201.o0",
       "hier_label32": "b32:00G1.o0",
       "color": "#ff0099",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "6"
     }
   },
   {
@@ -20270,7 +20455,8 @@
       "hier_label16": "b16:002010",
       "hier_label32": "b32:00G1.h0",
       "color": "#ff0099",
-      "branch_length": "6.0"
+      "branch_length": "6.0",
+      "polytomy": "6"
     }
   },
   {
@@ -20570,7 +20756,8 @@
       "hier_label16": "b16:00201.b1",
       "hier_label32": "b32:00G1.b1",
       "color": "#ff0099",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "5"
     }
   },
   {
@@ -20615,7 +20802,8 @@
       "hier_label16": "b16:002018",
       "hier_label32": "b32:00G1.h8",
       "color": "#ff0099",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -20630,7 +20818,8 @@
       "hier_label16": "b16:002018.b0",
       "hier_label32": "b32:00G1G",
       "color": "#ff0099",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -20825,7 +21014,8 @@
       "hier_label16": "b16:00202.q0",
       "hier_label32": "b32:00G2.q0",
       "color": "#ff0099",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -21005,7 +21195,8 @@
       "hier_label16": "b16:0020.b1",
       "hier_label32": "b32:00G.q1",
       "color": "#ff0099",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "4"
     }
   },
   {
@@ -21020,7 +21211,8 @@
       "hier_label16": "b16:0020.q2",
       "hier_label32": "b32:00G.o2",
       "color": "#ff0099",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -21035,7 +21227,8 @@
       "hier_label16": "b16:0020.o4",
       "hier_label32": "b32:00G.h4",
       "color": "#ff0099",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "10"
     }
   },
   {
@@ -21470,7 +21663,8 @@
       "hier_label16": "b16:0020.q3",
       "hier_label32": "b32:00G.o3",
       "color": "#ff0099",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "4"
     }
   },
   {
@@ -21485,7 +21679,8 @@
       "hier_label16": "b16:0020.o6",
       "hier_label32": "b32:00G.h6",
       "color": "#ff0099",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "9"
     }
   },
   {
@@ -21740,7 +21935,8 @@
       "hier_label16": "b16:00209.b0",
       "hier_label32": "b32:00G9.b0",
       "color": "#ff0099",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "5"
     }
   },
   {
@@ -21755,7 +21951,8 @@
       "hier_label16": "b16:00209.q0",
       "hier_label32": "b32:00G9.q0",
       "color": "#ff0099",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "3"
     }
   },
   {
@@ -21770,7 +21967,8 @@
       "hier_label16": "b16:00209.o0",
       "hier_label32": "b32:00G9.o0",
       "color": "#ff0099",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -22072,7 +22270,8 @@
       "color": "#6666ff",
       "hilight": "{17,166.0,#9999ff}",
       "branch_length": "9.0",
-      "root_color": "#6666ff"
+      "root_color": "#6666ff",
+      "polytomy": "3"
     }
   },
   {
@@ -22102,7 +22301,8 @@
       "hier_label16": "b16:0021.q0",
       "hier_label32": "b32:00G.o4",
       "color": "#6666ff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -22117,7 +22317,8 @@
       "hier_label16": "b16:0021.o0",
       "hier_label32": "b32:00G.h8",
       "color": "#6666ff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -22147,7 +22348,8 @@
       "hier_label16": "b16:00210.b0",
       "hier_label32": "b32:00GG.b0",
       "color": "#6666ff",
-      "branch_length": "7.0"
+      "branch_length": "7.0",
+      "polytomy": "3"
     }
   },
   {
@@ -22402,7 +22604,8 @@
       "hier_label16": "b16:0021.q1",
       "hier_label32": "b32:00G.o5",
       "color": "#6666ff",
-      "branch_length": "8.0"
+      "branch_length": "8.0",
+      "polytomy": "3"
     }
   },
   {
@@ -22649,7 +22852,8 @@
       "hier_label16": "b16:0022",
       "hier_label32": "b32:00H.b0",
       "color": "#660099",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -22694,7 +22898,8 @@
       "hier_label16": "b16:0022.o0",
       "hier_label32": "b32:00H.h0",
       "color": "#660099",
-      "branch_length": "7.0"
+      "branch_length": "7.0",
+      "polytomy": "10"
     }
   },
   {
@@ -22709,7 +22914,8 @@
       "hier_label16": "b16:00220",
       "hier_label32": "b32:00H0",
       "color": "#660099",
-      "branch_length": "5.0"
+      "branch_length": "5.0",
+      "polytomy": "13"
     }
   },
   {
@@ -23189,7 +23395,8 @@
       "hier_label16": "b16:00222",
       "hier_label32": "b32:00H2",
       "color": "#660099",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "3"
     }
   },
   {
@@ -23446,7 +23653,8 @@
       "hier_label16": "b16:0024",
       "hier_label32": "b32:00I.b0",
       "color": "#3333ff",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "5"
     }
   },
   {
@@ -23461,7 +23669,8 @@
       "hier_label16": "b16:0024.b0",
       "hier_label32": "b32:00I.q0",
       "color": "#3333ff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "5"
     }
   },
   {
@@ -23581,7 +23790,8 @@
       "hier_label16": "b16:0024.b1",
       "hier_label32": "b32:00I.q1",
       "color": "#3333ff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -23686,7 +23896,8 @@
       "hier_label16": "b16:00242",
       "hier_label32": "b32:00I2",
       "color": "#3333ff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -23865,7 +24076,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.0.1",
       "hier_label16": "b16:002.b1",
       "hier_label32": "b32:00.o5",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -23879,7 +24091,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.0.1.0",
       "hier_label16": "b16:002.q2",
       "hier_label32": "b32:00.ha",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -23896,7 +24109,8 @@
       "color": "#ff3366",
       "hilight": "{91,176.0,#ffcccc}",
       "branch_length": "9.0",
-      "root_color": "#ff3366"
+      "root_color": "#ff3366",
+      "polytomy": "4"
     }
   },
   {
@@ -23941,7 +24155,8 @@
       "hier_label16": "b16:0028.q0",
       "hier_label32": "b32:00K.o0",
       "color": "#ff3366",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -23971,7 +24186,8 @@
       "hier_label16": "b16:00280",
       "hier_label32": "b32:00K0",
       "color": "#ff3366",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -23986,7 +24202,8 @@
       "hier_label16": "b16:00280.b0",
       "hier_label32": "b32:00K0.b0",
       "color": "#ff3366",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "5"
     }
   },
   {
@@ -24001,7 +24218,8 @@
       "hier_label16": "b16:00280.q0",
       "hier_label32": "b32:00K0.q0",
       "color": "#ff3366",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "8"
     }
   },
   {
@@ -24016,7 +24234,8 @@
       "hier_label16": "b16:00280.o0",
       "hier_label32": "b32:00K0.o0",
       "color": "#ff3366",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "8"
     }
   },
   {
@@ -24211,7 +24430,8 @@
       "hier_label16": "b16:002802.b0",
       "hier_label32": "b32:00K04",
       "color": "#ff3366",
-      "branch_length": "7.0"
+      "branch_length": "7.0",
+      "polytomy": "3"
     }
   },
   {
@@ -24301,7 +24521,8 @@
       "hier_label16": "b16:002800.q2",
       "hier_label32": "b32:00K01.b0",
       "color": "#ff3366",
-      "branch_length": "10.0"
+      "branch_length": "10.0",
+      "polytomy": "4"
     }
   },
   {
@@ -24466,7 +24687,8 @@
       "hier_label16": "b16:00280.o2",
       "hier_label32": "b32:00K0.o2",
       "color": "#ff3366",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "4"
     }
   },
   {
@@ -24511,7 +24733,8 @@
       "hier_label16": "b16:002804.q0",
       "hier_label32": "b32:00K08.b0",
       "color": "#ff3366",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -24691,7 +24914,8 @@
       "hier_label16": "b16:002801.b0",
       "hier_label32": "b32:00K02",
       "color": "#ff3366",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "6"
     }
   },
   {
@@ -24856,7 +25080,8 @@
       "hier_label16": "b16:002801.b1",
       "hier_label32": "b32:00K03",
       "color": "#ff3366",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "3"
     }
   },
   {
@@ -24961,7 +25186,8 @@
       "hier_label16": "b16:00280.b1",
       "hier_label32": "b32:00K0.b1",
       "color": "#ff3366",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -25126,7 +25352,8 @@
       "hier_label16": "b16:00280.o6",
       "hier_label32": "b32:00K0.o6",
       "color": "#ff3366",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -25321,7 +25548,8 @@
       "hier_label16": "b16:0028.o1",
       "hier_label32": "b32:00K.h1",
       "color": "#ff3366",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "6"
     }
   },
   {
@@ -25576,7 +25804,8 @@
       "hier_label16": "b16:0028.b1",
       "hier_label32": "b32:00K.q1",
       "color": "#ff3366",
-      "branch_length": "9.0"
+      "branch_length": "9.0",
+      "polytomy": "3"
     }
   },
   {
@@ -25636,7 +25865,8 @@
       "hier_label16": "b16:0029",
       "hier_label32": "b32:00K.b1",
       "color": "#ff3366",
-      "branch_length": "7.0"
+      "branch_length": "7.0",
+      "polytomy": "4"
     }
   },
   {
@@ -25651,7 +25881,8 @@
       "hier_label16": "b16:0029.b0",
       "hier_label32": "b32:00K.q2",
       "color": "#ff3366",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "3"
     }
   },
   {
@@ -25741,7 +25972,8 @@
       "hier_label16": "b16:0029.b1",
       "hier_label32": "b32:00K.q3",
       "color": "#ff3366",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -26028,7 +26260,8 @@
       "hier_label16": "b16:002A.o0",
       "hier_label32": "b32:00L.h0",
       "color": "#9999ff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "7"
     }
   },
   {
@@ -26316,7 +26549,8 @@
       "hier_label32": "b32:00M.q0",
       "color": "#333333",
       "hilight": "{11,193.0,#ffffcc}",
-      "branch_length": "9.0"
+      "branch_length": "9.0",
+      "polytomy": "3"
     }
   },
   {
@@ -26753,7 +26987,8 @@
       "hier_label16": "b16:002D.q0",
       "hier_label32": "b32:00M.o4",
       "color": "#333333",
-      "branch_length": "9.0"
+      "branch_length": "9.0",
+      "polytomy": "4"
     }
   },
   {
@@ -26874,7 +27109,8 @@
       "hier_label16": "b16:002E",
       "hier_label32": "b32:00N.b0",
       "color": "#333333",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "7"
     }
   },
   {
@@ -26889,7 +27125,8 @@
       "hier_label16": "b16:002E.b0",
       "hier_label32": "b32:00N.q0",
       "color": "#333333",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "4"
     }
   },
   {
@@ -27189,7 +27426,8 @@
       "hier_label16": "b16:003",
       "hier_label32": "b32:00.q3",
       "hilight": "{70,179.0,#f0f0f0}",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -27274,7 +27512,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.1.0.0.0.0.0.0",
       "hier_label16": "b16:0030.q0",
       "hier_label32": "b32:00O.o0",
-      "branch_length": "4.0"
+      "branch_length": "4.0",
+      "polytomy": "3"
     }
   },
   {
@@ -27288,7 +27527,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.1.0.0.0.0.0.0.0",
       "hier_label16": "b16:0030.o0",
       "hier_label32": "b32:00O.h0",
-      "branch_length": "9.0"
+      "branch_length": "9.0",
+      "polytomy": "6"
     }
   },
   {
@@ -27302,7 +27542,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.1.0.0.0.0.0.0.0.0",
       "hier_label16": "b16:00300",
       "hier_label32": "b32:00O0",
-      "branch_length": "6.0"
+      "branch_length": "6.0",
+      "polytomy": "6"
     }
   },
   {
@@ -27330,7 +27571,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.1.0.0.0.0.0.0.0.0.0.0",
       "hier_label16": "b16:00300.q0",
       "hier_label32": "b32:00O0.q0",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -27358,7 +27600,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.1.0.0.0.0.0.0.0.0.0.0.0.0",
       "hier_label16": "b16:003000",
       "hier_label32": "b32:00O0.h0",
-      "branch_length": "5.0"
+      "branch_length": "5.0",
+      "polytomy": "6"
     }
   },
   {
@@ -27764,7 +28007,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.1.0.0.0.0.0.0.0.1",
       "hier_label16": "b16:00301",
       "hier_label32": "b32:00O1",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -28171,7 +28415,8 @@
       "hier_label16": "b16:003.o4",
       "hier_label32": "b32:00S",
       "hilight": "{14,199.0,#ccffcc}",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "4"
     }
   },
   {
@@ -28255,7 +28500,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.1.1.0.0.0.0.0.0.0.0",
       "hier_label16": "b16:00380.b0",
       "hier_label32": "b32:00S0.b0",
-      "branch_length": "5.0"
+      "branch_length": "5.0",
+      "polytomy": "3"
     }
   },
   {
@@ -28508,7 +28754,8 @@
       "hier_label16": "b16:003.o5",
       "hier_label32": "b32:00T",
       "hilight": "{8,204.0,#ffffcc}",
-      "branch_length": "22.0"
+      "branch_length": "22.0",
+      "polytomy": "3"
     }
   },
   {
@@ -28522,7 +28769,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.1.1.0.1.0",
       "hier_label16": "b16:003A",
       "hier_label32": "b32:00T.b0",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "4"
     }
   },
   {
@@ -28536,7 +28784,8 @@
       "hier_label2": "0.0.0.0.0.0.0.0.0.0.1.1.1.0.1.0.0",
       "hier_label16": "b16:003A.b0",
       "hier_label32": "b32:00T.q0",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -28903,7 +29152,8 @@
       "hier_label2": "0.0.0.0.0.0.0.1.0.0.0",
       "hier_label16": "b16:01.o0",
       "hier_label32": "b32:04.b0",
-      "branch_length": "13.0"
+      "branch_length": "13.0",
+      "polytomy": "3"
     }
   },
   {
@@ -28931,7 +29181,8 @@
       "hier_label2": "0.0.0.0.0.0.0.1.0.0.0.0.0",
       "hier_label16": "b16:010.b0",
       "hier_label32": "b32:04.o0",
-      "branch_length": "5.0"
+      "branch_length": "5.0",
+      "polytomy": "3"
     }
   },
   {
@@ -29394,7 +29645,8 @@
       "hier_label2": "0.0.0.0.0.0.1.0",
       "hier_label16": "b16:02",
       "hier_label32": "b32:0.o2",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "5"
     }
   },
   {
@@ -29422,7 +29674,8 @@
       "hier_label2": "0.0.0.0.0.0.1.0.0.0",
       "hier_label16": "b16:02.q0",
       "hier_label32": "b32:08",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -29702,7 +29955,8 @@
       "hier_label2": "0.0.0.0.0.1",
       "hier_label16": "b16:0.q1",
       "hier_label32": "b32:0.b1",
-      "branch_length": "30.0"
+      "branch_length": "30.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -29716,7 +29970,8 @@
       "hier_label2": "0.0.0.0.0.1.0",
       "hier_label16": "b16:0.o2",
       "hier_label32": "b32:0.q2",
-      "branch_length": "92.0"
+      "branch_length": "92.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -29823,7 +30078,8 @@
       "hier_label16": "b16:040.q0",
       "hier_label32": "b32:0G.h0",
       "color": "#ccccff",
-      "branch_length": "8.0"
+      "branch_length": "8.0",
+      "polytomy": "5"
     }
   },
   {
@@ -29838,7 +30094,8 @@
       "hier_label16": "b16:040.o0",
       "hier_label32": "b32:0G0",
       "color": "#ccccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "5"
     }
   },
   {
@@ -30018,7 +30275,8 @@
       "hier_label16": "b16:040.o1",
       "hier_label32": "b32:0G1",
       "color": "#ccccff",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "3"
     }
   },
   {
@@ -30123,7 +30381,8 @@
       "hier_label16": "b16:040.q1",
       "hier_label32": "b32:0G.h1",
       "color": "#ccccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -30183,7 +30442,8 @@
       "hier_label16": "b16:0404.q0",
       "hier_label32": "b32:0G2.o0",
       "color": "#ccccff",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -30438,7 +30698,8 @@
       "hier_label16": "b16:040.b1",
       "hier_label32": "b32:0G.o1",
       "color": "#ccccff",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
@@ -30453,7 +30714,8 @@
       "hier_label16": "b16:040.q2",
       "hier_label32": "b32:0G.h2",
       "color": "#ccccff",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "polytomy": "15"
     }
   },
   {
@@ -30693,7 +30955,8 @@
       "hier_label16": "b16:040.q3",
       "hier_label32": "b32:0G.h3",
       "color": "#ccccff",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "3"
     }
   },
   {
@@ -31007,7 +31270,8 @@
       "hier_label2": "0.0.0.0.0.1.0.1",
       "hier_label16": "b16:05",
       "hier_label32": "b32:0.o5",
-      "branch_length": "22.0"
+      "branch_length": "22.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -31021,7 +31285,8 @@
       "hier_label2": "0.0.0.0.0.1.0.1.0",
       "hier_label16": "b16:05.b0",
       "hier_label32": "b32:0.ha",
-      "branch_length": "2.0"
+      "branch_length": "2.0",
+      "root_ancestor": "true"
     }
   },
   {
@@ -31158,7 +31423,8 @@
       "hier_label16": "b16:0500.q0",
       "hier_label32": "b32:0K0.o0",
       "color": "#ff9999",
-      "branch_length": "1.0"
+      "branch_length": "1.0",
+      "polytomy": "11"
     }
   },
   {
@@ -31578,7 +31844,8 @@
       "hier_label16": "b16:052.q0",
       "hier_label32": "b32:0K.h8",
       "color": "#ff9999",
-      "branch_length": "3.0"
+      "branch_length": "3.0",
+      "polytomy": "3"
     }
   },
   {
