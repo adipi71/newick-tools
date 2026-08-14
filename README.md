@@ -201,9 +201,9 @@ Merges attributes from a TSV into the `data` block of matching nodes (matched by
 The TSV must have a header row with an `id` column and one or more attribute columns:
 
 ```
-id	attributo1	attributo2
-n3	valore_a	valore_b
-n7	valore_c	
+id	attribute1	attribute2
+n3	value_a	value_b
+n7	value_c	
 ```
 
 ---
@@ -240,6 +240,121 @@ java -cp bin Main help
 | other custom fields  | `[&!key=value]`           |
 | `branch_length`      | `:value`                  |
 | `hier_label`         | ignored                   |
+
+---
+
+## Example
+
+A toy phylogenetic tree with 4 clusters (`A`, `B`, `C`, `D`), each with 2 leaves, hanging off a root with 4 direct children (a polytomy). No node is colored yet:
+
+```mermaid
+graph TD
+    root[root] --> ClusterA
+    root --> ClusterB
+    root --> ClusterC
+    root --> ClusterD
+    ClusterA --> A1
+    ClusterA --> A2
+    ClusterB --> B1
+    ClusterB --> B2
+    ClusterC --> C1
+    ClusterC --> C2
+    ClusterD --> D1
+    ClusterD --> D2
+```
+
+An expert examines the tree and colors the nodes that identify each cluster — not necessarily the same way for each: on `A` and `C` only one representative leaf is colored, on `B` both leaves are colored, and on `D` the internal node itself is colored instead of its leaves:
+
+```mermaid
+graph TD
+    root[root] --> ClusterA
+    root --> ClusterB
+    root --> ClusterC
+    root --> ClusterD
+    ClusterA --> A1
+    ClusterA --> A2
+    ClusterB --> B1
+    ClusterB --> B2
+    ClusterC --> C1
+    ClusterC --> C2
+    ClusterD --> D1
+    ClusterD --> D2
+
+    style A1 fill:#dc322f,color:#fff,stroke:#333
+    style B1 fill:#268bd2,color:#fff,stroke:#333
+    style B2 fill:#268bd2,color:#fff,stroke:#333
+    style C2 fill:#2aa198,color:#fff,stroke:#333
+    style ClusterD fill:#b58900,color:#fff,stroke:#333
+```
+
+This second tree, with the color annotations, is the pipeline's **input**. As NEXUS (`[&!color=#rrggbb]` annotation, see [Annotation mapping](#annotation-mapping)):
+
+```
+#NEXUS
+BEGIN TREES;
+	tree TREE1 = [&R] ((A1[&!color=#dc322f]:1,A2:1)ClusterA:1,(B1[&!color=#268bd2]:1,B2[&!color=#268bd2]:1)ClusterB:1,(C1:1,C2[&!color=#2aa198]:1)ClusterC:1,(D1:1,D2:1)ClusterD[&!color=#b58900]:1);
+end;
+```
+
+From here on, the algorithm (`label`) processes the tree in these steps. All the values shown are the real output obtained by running the pipeline on this file.
+
+### 1. Root node per color (`root_color`)
+
+For each distinct color found in the tree, the node with the shortest `hier_label` (closest to the root) is chosen; ties are broken by the lexicographically smaller one:
+
+| Color | Nodes with that color | Chosen node (`root_color`) | `hier_label` | Why |
+|---|---|---|---|---|
+| `#dc322f` | A1 | **A1** | `1.1` | only node with that color |
+| `#268bd2` | B1, B2 | **B1** | `2.1` | `2.1` and `2.2` have the same length → `2.1` wins (lexicographically smaller) |
+| `#2aa198` | C2 | **C2** | `3.2` | only node with that color |
+| `#b58900` | ClusterD | **ClusterD** | `4` | the color was applied directly to the internal node, not to a leaf |
+
+### 2. Predecessors of the root nodes (`root_ancestor`)
+
+For each `root_color` node, the parent→grandparent→... chain is walked upward, setting `root_ancestor="true"`, stopping at the first node that is already marked (whether it's itself a `root_color` node or already flagged `root_ancestor`) or after marking the true root. The four `root_color` nodes are processed in the order they appear in the tree (A1, B1, C2, ClusterD):
+
+| Order | Root node | Walk | Nodes marked `root_ancestor` |
+|---|---|---|---|
+| 1 | A1 (`1.1`) | parent `ClusterA` (unmarked) → parent `root` (unmarked) → root reached, stop | `ClusterA`, `root` |
+| 2 | B1 (`2.1`) | parent `ClusterB` (unmarked) → parent `root` (**already marked at step 1**), stop | `ClusterB` |
+| 3 | C2 (`3.2`) | parent `ClusterC` (unmarked) → parent `root` (already marked), stop | `ClusterC` |
+| 4 | ClusterD (`4`) | parent `root` (already marked), stop immediately | *(none)* |
+
+Result: 4 `root_color` nodes + 4 `root_ancestor` nodes (`root`, `ClusterA`, `ClusterB`, `ClusterC`) — exported respectively to `_root_colors.tsv` and, combined, to `_all_roots.tsv` (8 rows).
+
+### 3. Binary path (`hier_label2`) and handling polytomies
+
+`hier_label2` encodes each dot-separated segment `s` of `hier_label` (the 1-based position of the child within its parent) as follows: `s-1` if ≤ 1 (single digit `0`/`1`), otherwise `s-1` as **4-bit** binary. The root of this example has 4 children instead of 2 (a polytomy, flagged with `polytomy="4"` as described above): the first two are still encoded on a single bit, but from the third child onward the 4-bit block is needed, because a single bit can only distinguish 2 alternatives:
+
+| Root's child | position `s` | `s-1` | `hier_label2` segment |
+|---|---|---|---|
+| ClusterA | 1 | 0 | `0` (single digit) |
+| ClusterB | 2 | 1 | `1` (single digit) |
+| ClusterC | 3 | 2 | `0.0.1.0` (4-bit binary of 2) |
+| ClusterD | 4 | 3 | `0.0.1.1` (4-bit binary of 3) |
+
+The `hier_label2` of any node is the concatenation of the segments of all its ancestors: for example `C1` has `hier_label="3.1"` → segment `"3"` → `0.0.1.0`, segment `"1"` → `0` → `hier_label2 = 0.0.1.0.0`.
+
+### 4. Encoding into `hier_label16` / `hier_label32`
+
+`hier_label2` is grouped into blocks of 4 digits (for `hier_label16`) or 5 digits (for `hier_label32`); a full block becomes a hex/base32 digit, an incomplete final block becomes `.` + a prefix (`b`/`q`/`o`/`h` depending on how many digits remain, see the table in the previous section) + the value — **without** padding:
+
+| Node | `hier_label2` | `hier_label16` | `hier_label32` |
+|---|---|---|---|
+| ClusterA | `0` | `b16:0` | `b32:0` |
+| A1 | `0.0` | `b16:.q0` | `b32:.q0` |
+| ClusterB | `1` | `b16:.b1` | `b32:.b1` |
+| B1 | `1.0` | `b16:.q2` | `b32:.q2` |
+| ClusterC | `0.0.1.0` | `b16:2` | `b32:.h2` |
+| C1 | `0.0.1.0.0` | `b16:2.b0` | `b32:4` |
+| ClusterD | `0.0.1.1` | `b16:3` | `b32:.h3` |
+
+Notes:
+- **`ClusterC`** has exactly 4 binary digits: for `hier_label16` (blocks of 4) this is a full block → single hex digit `2`, no dot. For `hier_label32` (blocks of 5) the same block is incomplete (4 out of 5 digits) → `.h2` (`h` = 4 remaining digits, hex value).
+- **`C1`** has 5 binary digits (`0.0.1.0.0`): for `hier_label16` the first 4-digit block is full (`2`), leaving 1 digit (`0`) → suffix `.b0` (`b` = 1 remaining digit). For `hier_label32` those same 5 digits exactly fill one block → no suffix, just the base32 digit for value 4.
+- **`A1`** has only 2 binary digits (`0.0`): too few for a full block at either 4 or 5 digits → in both cases it becomes `.q0` (`q` = 2 remaining digits), with the leading dot because there's no full block before it.
+
+This tree doesn't happen to show a 3-digit final block (`o` suffix), but the rule is identical: see the full table in the [`hier_label16`/`hier_label32`](#json--json--hierarchical-label) section above.
 
 ---
 
