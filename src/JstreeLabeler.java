@@ -73,11 +73,12 @@ public class JstreeLabeler {
         }
         if (root == null) throw new RuntimeException("Radice non trovata nel JSON.");
 
-        // Assegna label gerarchiche con BFS
-        root.hierLabel   = "0";
-        root.hierLabel2  = "0";
-        root.hierLabel16 = "0";
-        root.hierLabel32 = "0";
+        // Assegna label gerarchiche con BFS.
+        // hier_label2/16/32 restano non impostate (null) per la radice: sono
+        // codifiche del percorso verso un nodo, e la radice non ha percorso;
+        // il valore "0" andrebbe altrimenti in collisione con quello del
+        // primo figlio (posizione 1 → cifra "0").
+        root.hierLabel = "0";
         Queue<String> queue = new ArrayDeque<>();
         queue.add(root.id);
 

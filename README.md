@@ -111,7 +111,7 @@ Adds `hier_label` to each node:
 | child of 1  | `1.1`      |
 | child of 2  | `2.1`      |
 
-Alongside `hier_label`, the labeler also computes three encodings of it — `hier_label2`, `hier_label16` (prefixed `b16:`), `hier_label32` (prefixed `b32:`) — kept in the node data and exported to TSV/NEXUS.
+Alongside `hier_label`, the labeler also computes three encodings of it — `hier_label2`, `hier_label16` (prefixed `b16:`), `hier_label32` (prefixed `b32:`) — kept in the node data and exported to TSV/NEXUS. The root itself is left **without** these three: only `hier_label="0"` identifies it. They encode a *path* from the root, and the root has none — giving it a value would collide with the encoding of the first child (position 1 → digit `0`), as `hier_label2` on its own isn't a globally unique identifier, just a per-node code.
 
 **`hier_label2`** — each dot-separated segment `s` of `hier_label` is converted independently:
 - `s == 1` → `0`
@@ -341,6 +341,7 @@ The `hier_label2` of any node is the concatenation of the segments of all its an
 
 | Node | `hier_label2` | `hier_label16` | `hier_label32` |
 |---|---|---|---|
+| root | *(empty)* | *(empty)* | *(empty)* |
 | ClusterA | `0` | `b16:0` | `b32:0` |
 | A1 | `0.0` | `b16:.q0` | `b32:.q0` |
 | ClusterB | `1` | `b16:.b1` | `b32:.b1` |
@@ -350,6 +351,7 @@ The `hier_label2` of any node is the concatenation of the segments of all its an
 | ClusterD | `0.0.1.1` | `b16:3` | `b32:.h3` |
 
 Notes:
+- **`root`** gets no `hier_label2`/`16`/`32` at all — only `hier_label="0"` identifies it. Note that `ClusterA`, its first child, independently lands on `"0"` too (position 1 → digit `0`, per the rule below): if the root were also assigned `"0"`, the two would be indistinguishable by `hier_label2` alone. Leaving the root's code empty avoids that collision.
 - **`ClusterC`** has exactly 4 binary digits: for `hier_label16` (blocks of 4) this is a full block → single hex digit `2`, no dot. For `hier_label32` (blocks of 5) the same block is incomplete (4 out of 5 digits) → `.h2` (`h` = 4 remaining digits, hex value).
 - **`C1`** has 5 binary digits (`0.0.1.0.0`): for `hier_label16` the first 4-digit block is full (`2`), leaving 1 digit (`0`) → suffix `.b0` (`b` = 1 remaining digit). For `hier_label32` those same 5 digits exactly fill one block → no suffix, just the base32 digit for value 4.
 - **`A1`** has only 2 binary digits (`0.0`): too few for a full block at either 4 or 5 digits → in both cases it becomes `.q0` (`q` = 2 remaining digits), with the leading dot because there's no full block before it.
