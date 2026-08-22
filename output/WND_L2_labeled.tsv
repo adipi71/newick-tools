@@ -1,5 +1,5 @@
 sample	hier_label	hier_label2	hier_label16	hier_label32	root_ancestor	branch_length	polytomy	color	hilight	root_color
-n0	0	0	b16:0	b32:0	true					
+n0	0				true					
 n1	1	0	b16:0	b32:0	true	0.0				
 n2	1.1	0.0	b16:.q0	b32:.q0	true	452.0				
 n3	1.1.1	0.0.0	b16:.o0	b32:.o0	true	267.0				

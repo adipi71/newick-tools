@@ -4,12 +4,12 @@
     "parent": "#",
     "text": "n0",
     "hier_label": "0",
-    "hier_label2": "0",
+    "hier_label2": "",
     "data": {
       "hier_label": "0",
-      "hier_label2": "0",
-      "hier_label16": "b16:0",
-      "hier_label32": "b32:0",
+      "hier_label2": "",
+      "hier_label16": "",
+      "hier_label32": "",
       "root_ancestor": "true"
     }
   },

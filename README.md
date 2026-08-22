@@ -22,10 +22,17 @@ Java pipeline to convert and annotate phylogenetic NEXUS trees: parses NEXUS to 
 ## Quick and dirty
 
 ```bash
+./main_example_launch.sh
+```
+
+where `main_example_launch.sh` contains:
+```bash
+./label_and_nexus.sh resources/WND_L1.nexus output
 ./label_and_nexus.sh resources/WND_L2.nexus output
 ```
 
-`label_and_nexus.sh` — a shell script that compiles and runs the full pipeline in one shot on a given `.nexus` file. Here using the example input file in `resources/WND_L2.nexus`.
+
+`label_and_nexus.sh` — a shell script that compiles and runs the full pipeline in one shot on a given `.nexus` file. Here using the (example with WND_L2) input file in `resources/WND_L2.nexus`.
 
 See the [flow diagram](docs/label_and_nexus_flow.md) for a visual overview of the pipeline.
                          
