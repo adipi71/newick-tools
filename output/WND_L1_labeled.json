@@ -22,8 +22,8 @@
     "data": {
       "hier_label": "1",
       "hier_label2": "0",
-      "hier_label16": "b16:0",
-      "hier_label32": "b32:0",
+      "hier_label16": "b16:.b0",
+      "hier_label32": "b32:.b0",
       "branch_length": "0",
       "root_ancestor": "true"
     }

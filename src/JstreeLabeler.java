@@ -304,7 +304,7 @@ public class JstreeLabeler {
     // e reso come prefisso + valore decimale delle cifre binarie effettive
     // (nessun padding): 1 cifra → b0/b1, 2 cifre → q0..q3, 3 cifre → o0..o7.
     static String toHierLabel16(String label2) {
-        if (label2 == null || label2.isEmpty() || "0".equals(label2)) return "0";
+        if (label2 == null || label2.isEmpty()) return "0";
         String[] bits = label2.split("\\.");
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < bits.length; i += 4) {
@@ -336,7 +336,7 @@ public class JstreeLabeler {
     // padding): 1 cifra → b0/b1, 2 cifre → q0..q3, 3 cifre → o0..o7,
     // 4 cifre → h0..hf (esadecimale).
     static String toHierLabel32(String label2) {
-        if (label2 == null || label2.isEmpty() || "0".equals(label2)) return "0";
+        if (label2 == null || label2.isEmpty()) return "0";
         final String CHARS = "0123456789ABCDEFGHIJKLMNOPQRSTUV";
         String[] bits = label2.split("\\.");
         StringBuilder sb = new StringBuilder();
